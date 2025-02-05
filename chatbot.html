@@ -30,18 +30,15 @@
             chatOutput.innerHTML += `<p><b>Bot:</b> <i>Thinking...</i></p>`;
 
             try {
-                const response = await fetch("https://api-inference.huggingface.co/models/openassistant/oasst-sft-4-pythia-12b-epoch-3.5", {
+                const response = await fetch("https://poe.com/api/gql_POST", {
                     method: "POST",
-                    headers: {
-                        "Authorization": "Bearer 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",  // Replace 'xxx' with your free Hugging Face API key
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({ inputs: userInput })
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ query: userInput })
                 });
 
                 const data = await response.json();
-                if (data && data.length > 0 && data[0].generated_text) {
-                    chatOutput.innerHTML += `<p><b>Bot:</b> ${data[0].generated_text}</p>`;
+                if (data && data.response) {
+                    chatOutput.innerHTML += `<p><b>Bot:</b> ${data.response}</p>`;
                 } else {
                     chatOutput.innerHTML += `<p><b>Bot:</b> Sorry, I couldn't understand.</p>`;
                 }
