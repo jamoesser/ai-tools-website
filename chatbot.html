@@ -38,9 +38,14 @@
             max-height: 55vh;
         }
 
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
         .message {
             padding: 10px;
-            margin: 5px;
             border-radius: 8px;
             max-width: 80%;
             word-wrap: break-word;
@@ -113,21 +118,25 @@
             const userInput = userInputElement.value.trim();
             if (!userInput) return;
 
-            // Append user message
-            chatOutput.innerHTML += `<p class="message user-message"><b>You:</b> ${userInput}</p>`;
+            // Create user message container
+            const userMessageContainer = document.createElement("div");
+            userMessageContainer.className = "message-container";
+            userMessageContainer.innerHTML = `<p class="message user-message"><b>You:</b> ${userInput}</p>`;
+            chatOutput.appendChild(userMessageContainer);
+
             userInputElement.value = ""; // Clear input field
 
-            // Add "Thinking..." message
-            const thinkingElement = document.createElement("p");
-            thinkingElement.className = "message bot-message";
-            thinkingElement.innerHTML = "<b>Bot:</b> <i>Thinking...</i>";
-            chatOutput.appendChild(thinkingElement);
+            // Create bot message container
+            const botMessageContainer = document.createElement("div");
+            botMessageContainer.className = "message-container";
+            botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> <i>Thinking...</i></p>`;
+            chatOutput.appendChild(botMessageContainer);
 
             // Scroll to bottom
             chatOutput.scrollTop = chatOutput.scrollHeight;
 
             try {
-                const response = await fetch("https://api-inference.huggingface.co/models/facebook/blenderbot-3B", {
+                const response = await fetch("https://api-inference.huggingface.co/models/microsoft/Phi-3.5-mini-instruct", {
                     method: "POST",
                     headers: {
                         "Authorization": "Bearer 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",  // Replace with your actual Hugging Face API key
@@ -145,14 +154,11 @@
                     botResponse = data.generated_text;
                 }
 
-                // Remove "Thinking..."
-                thinkingElement.remove();
-
-                // Append bot response
-                chatOutput.innerHTML += `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
+                // Update bot response and remove "Thinking..."
+                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
 
             } catch (error) {
-                thinkingElement.innerHTML = "<b>Bot:</b> Error fetching response.";
+                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error fetching response.</p>`;
                 console.error("Chatbot API error:", error);
             }
 
