@@ -27,6 +27,7 @@
             width: 100%;
             position: fixed;
             top: 0;
+            left: 0;
             box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
         }
 
@@ -42,27 +43,29 @@
             color: #008c9e;
         }
 
-        /* Chatbot Section */
+        /* Chatbot Container */
         #chatContainer {
-            width: 95%;
+            width: 90%;
             max-width: 800px;
             background-color: #1e1e1e;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
             display: flex;
             flex-direction: column;
             margin-top: 70px;
             height: 80vh;
+            overflow-y: auto;
         }
 
         #chatOutput {
             flex-grow: 1;
             overflow-y: auto;
             padding-bottom: 10px;
-            max-height: calc(100% - 60px);
             font-size: 16px;
             padding-right: 10px;
+            display: flex;
+            flex-direction: column;
         }
 
         .message-container {
@@ -92,7 +95,7 @@
             align-self: flex-start;
         }
 
-        /* Chat Input */
+        /* Chat Input Container */
         #inputContainer {
             display: flex;
             align-items: center;
@@ -101,6 +104,7 @@
             width: 100%;
         }
 
+        /* Prevent iPhone Zoom & Optimize Input Field */
         #userInput {
             flex: 1;
             padding: 12px;
@@ -109,11 +113,13 @@
             outline: none;
             background-color: #2a2a2a;
             color: white;
-            font-size: 16px; /* ✅ Prevents iPhone Zoom */
+            font-size: 16px; /* Prevents iPhone Zoom */
             resize: none;
             height: 50px;
+            min-height: 50px;
         }
 
+        /* Send Button */
         button {
             background-color: #00bcd4;
             color: black;
@@ -133,16 +139,17 @@
         /* Mobile Optimizations */
         @media (max-width: 600px) {
             #chatContainer {
-                width: 100%;
+                width: 95%;
                 height: 85vh;
                 margin-top: 60px;
                 border-radius: 0;
-                padding: 15px;
+                padding: 10px;
             }
 
             #userInput {
-                font-size: 16px; /* ✅ Fix for iPhone */
+                font-size: 16px; /* ✅ Prevents zoom-in issue */
                 height: 45px;
+                min-height: 45px;
             }
 
             button {
@@ -157,10 +164,9 @@
 
     <!-- Navigation Bar -->
     <nav>
-		<a href="index.html">Chatbot</a>
-		<a href="image-generator.html">Image Generator</a>
-	</nav>
-
+        <a href="index.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+    </nav>
 
     <!-- Chatbot Section -->
     <div id="chatContainer">
@@ -193,18 +199,18 @@
             botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> <i>Thinking...</i></p>`;
             chatOutput.appendChild(botMessageContainer);
 
-            // Scroll to bottom
+            // Scroll to bottom after adding message
             chatOutput.scrollTop = chatOutput.scrollHeight;
 
             try {
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
                     headers: {
-                        "Authorization": "Bearer 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",  // Replace with your actual API Key
+                        "Authorization": "Bearer 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",  // Replace with actual API Key
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        model: "llama-3.3-70b-versatile",  // ✅ Using the correct model
+                        model: "llama-3.3-70b-versatile",
                         messages: [{ role: "user", content: userInput }],
                         temperature: 0.7,
                         max_tokens: 100
@@ -212,7 +218,6 @@
                 });
 
                 const data = await response.json();
-
                 let botResponse = "Sorry, I couldn't understand.";
 
                 if (data.choices && data.choices.length > 0) {
@@ -225,18 +230,18 @@
                 botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
 
             } catch (error) {
-                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error connecting to Groq API.</p>`;
-                console.error("Groq API error:", error);
+                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error connecting to API.</p>`;
+                console.error("API error:", error);
             }
 
-            // Scroll to bottom
+            // Scroll to bottom after response
             chatOutput.scrollTop = chatOutput.scrollHeight;
         }
 
         // Press "Enter" to send
         function handleKeyPress(event) {
             if (event.key === "Enter" && !event.shiftKey) { 
-                event.preventDefault(); // Prevent new line in textarea
+                event.preventDefault();
                 sendMessage();
             }
         }
