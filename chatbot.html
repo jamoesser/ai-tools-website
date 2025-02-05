@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot - Flan-T5-Large</title>
+    <title>AI Chatbot - DialoGPT-Small</title>
     <style>
         body {
             background-color: #121212;
@@ -135,7 +135,7 @@
             chatOutput.scrollTop = chatOutput.scrollHeight;
 
             try {
-                const response = await fetch("https://api-inference.huggingface.co/models/google/flan-t5-large", {
+                const response = await fetch("https://api-inference.huggingface.co/models/microsoft/DialoGPT-small", {
                     method: "POST",
                     headers: {
                         "Authorization": "Bearer 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",  // Replace with your actual Hugging Face API key
@@ -144,7 +144,7 @@
                     body: JSON.stringify({
                         inputs: userInput,
                         parameters: {
-                            max_new_tokens: 100,  // Limit response length to prevent excessive replies
+                            max_new_tokens: 100,  // Limit response length
                             temperature: 0.7,  // Control randomness (lower = more predictable)
                             top_p: 0.9  // Helps filter out unnecessary responses
                         }
