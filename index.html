@@ -12,6 +12,11 @@
             font-family: "Arial", sans-serif;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
 
         /* Navigation Bar */
@@ -19,6 +24,9 @@
             background-color: #1e1e1e;
             padding: 15px;
             text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
             box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
         }
 
@@ -34,44 +42,27 @@
             color: #008c9e;
         }
 
-        /* Page Content */
-        .container {
-            width: 80%;
-            margin: auto;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        p {
-            font-size: 1.2em;
-            color: #bbb;
-        }
-
         /* Chatbot Section */
         #chatContainer {
-            width: 60%;
+            width: 95%;
             max-width: 800px;
             background-color: #1e1e1e;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
-            overflow-y: auto;
-            height: 70vh;
             display: flex;
             flex-direction: column;
-            margin: 20px auto;
+            margin-top: 70px; /* Adjust for nav bar */
+            height: 80vh;
         }
 
         #chatOutput {
             flex-grow: 1;
             overflow-y: auto;
             padding-bottom: 10px;
-            max-height: 55vh;
+            max-height: calc(100% - 60px);
+            font-size: 16px;
+            padding-right: 10px;
         }
 
         .message-container {
@@ -101,8 +92,17 @@
             align-self: flex-start;
         }
 
+        /* Chat Input */
+        #inputContainer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 10px;
+            width: 100%;
+        }
+
         #userInput {
-            width: calc(100% - 20px);
+            flex: 1;
             padding: 12px;
             border-radius: 5px;
             border: none;
@@ -111,13 +111,7 @@
             color: white;
             font-size: 16px;
             resize: none;
-        }
-
-        #inputContainer {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            padding-top: 10px;
+            height: 50px;
         }
 
         button {
@@ -129,12 +123,34 @@
             font-size: 16px;
             cursor: pointer;
             transition: 0.2s;
+            min-width: 80px;
         }
 
         button:hover {
             background-color: #008c9e;
         }
 
+        /* Mobile Optimizations */
+        @media (max-width: 600px) {
+            #chatContainer {
+                width: 100%;
+                height: 85vh;
+                margin-top: 60px;
+                border-radius: 0;
+                padding: 15px;
+            }
+
+            #userInput {
+                font-size: 14px;
+                height: 45px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+                min-width: 70px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -147,17 +163,11 @@
         <a href="#">Contact</a>
     </nav>
 
-    <!-- Page Content -->
-    <div class="container">
-        <h1>Welcome to Your AI Chatbot</h1>
-        <p>Chat with our AI assistant powered by Groq API.</p>
-    </div>
-
     <!-- Chatbot Section -->
     <div id="chatContainer">
         <div id="chatOutput"></div>
         <div id="inputContainer">
-            <textarea id="userInput" placeholder="Type your message..." rows="2" onkeypress="handleKeyPress(event)"></textarea>
+            <textarea id="userInput" placeholder="Type your message..." rows="1" onkeypress="handleKeyPress(event)"></textarea>
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
