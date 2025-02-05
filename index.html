@@ -3,16 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>AI Chatbot - Dark Theme</title>
+    <style>
+        /* Global Dark Futuristic Theme */
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #1e1e1e;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+        }
+
+        nav a {
+            color: #00bcd4;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #008c9e;
+        }
+
+        /* Page Content */
+        .container {
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #bbb;
+        }
+
+        /* Chatbot Section */
+        #chatContainer {
+            width: 60%;
+            max-width: 800px;
+            background-color: #1e1e1e;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+            overflow-y: auto;
+            height: 70vh;
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+        }
+
+        #chatOutput {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-bottom: 10px;
+            max-height: 55vh;
+        }
+
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+
+        .message {
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+            display: inline-block;
+        }
+
+        .user-message {
+            background-color: #00bcd4;
+            color: #000;
+            align-self: flex-end;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: #333;
+            color: #fff;
+            align-self: flex-start;
+        }
+
+        #userInput {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border-radius: 5px;
+            border: none;
+            outline: none;
+            background-color: #2a2a2a;
+            color: white;
+            font-size: 16px;
+            resize: none;
+        }
+
+        #inputContainer {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            padding-top: 10px;
+        }
+
+        button {
+            background-color: #00bcd4;
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #008c9e;
+        }
+
+    </style>
 </head>
 <body>
-    <h1>Welcome to AI Tools</h1>
-    <p>Choose a tool:</p>
-    <ul>
-        <li><a href="chatbot.html">AI Chatbot</a></li>
-        <li><a href="image-generator.html">AI Image Generator</a></li>
-        <!-- Add more AI tools here -->
-    </ul>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">AI Tools</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <h1>Welcome to Your AI Chatbot</h1>
+        <p>Chat with our AI assistant powered by DialoGPT.</p>
+    </div>
+
+    <!-- Chatbot Section -->
+    <div id="chatContainer">
+        <div id="chatOutput"></div>
+        <div id="inputContainer">
+            <textarea id="userInput" placeholder="Type your message..." rows="2" onkeypress="handleKeyPress(event)"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Script -->
+    <script>
+        async function sendMessage() {
+            const userInputElement = document.getElementById("userInput");
+            const chatOutput = document.getElementById("chatOutput");
+            const userInput = userInputElement.value.trim();
+            if (!userInput) return;
+
+            // Create user message container
+            const userMessageContainer = document.createElement("div");
+            userMessageContainer.className = "message-container";
+            userMessageContainer.innerHTML = `<p class="message user-message"><b>You:</b> ${userInput}</p>`;
+            chatOutput.appendChild(userMessageContainer);
+
+            userInputElement.value = ""; // Clear input field
+
+            // Create bot message container
+            const botMessageContainer = document.createElement("div");
+            botMessageContainer.className = "message-container";
+            botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> <i>Thinking...</i></p>`;
+            chatOutput.appendChild(botMessageContainer);
+
+            // Scroll to bottom
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+
+            try {
+                const response = await fetch("https://api-inference.huggingface.co/models/microsoft/DialoGPT-small", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer hf_xxx",  // Replace with your Hugging Face API key
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        inputs: userInput,
+                        parameters: {
+                            max_new_tokens: 100,  // Limit response length
+                            temperature: 0.7,  // Control randomness (lower = more predictable)
+                            top_p: 0.9  // Helps filter out unnecessary responses
+                        }
+                    })
+                });
+
+                const data = await response.json();
+                
+                let botResponse = "Sorry, I couldn't understand.";
+                if (Array.isArray(data) && data.length > 0) {
+                    botResponse = data[0]?.generated_text || botResponse;
+                } else if (data.generated_text) {
+                    botResponse = data.generated_text;
+                }
+
+                // Update bot response and remove "Thinking..."
+                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
+
+            } catch (error) {
+                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error fetching response.</p>`;
+                console.error("Chatbot API error:", error);
+            }
+
+            // Scroll to bottom
+            chatOutput.scrollTop = chatOutput.scrollHeight;
+        }
+
+        // Press "Enter" to send
+        function handleKeyPress(event) {
+            if (event.key === "Enter" && !event.shiftKey) { 
+                event.preventDefault(); // Prevent new line in textarea
+                sendMessage();
+            }
+        }
+    </script>
+
 </body>
 </html>
