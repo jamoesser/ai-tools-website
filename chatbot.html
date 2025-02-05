@@ -142,7 +142,14 @@
                         "Authorization": "Bearer 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",  // Replace with your actual Hugging Face API key
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ inputs: userInput })
+                    body: JSON.stringify({
+                        inputs: userInput,
+                        parameters: {
+                            max_new_tokens: 100,  // Limit response length to prevent excessive replies
+                            temperature: 0.7,  // Control randomness (lower = more predictable)
+                            top_p: 0.9  // Helps filter out unnecessary responses
+                        }
+                    })
                 });
 
                 const data = await response.json();
