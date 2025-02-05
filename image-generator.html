@@ -1,3 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>AI Image Generator - Hugging Face</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: "Arial", sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #00bcd4;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #008c9e;
+        }
+
+        #imageContainer {
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AI Image Generator</h1>
+    <p>Enter a prompt and generate an AI image using **Stable Diffusion (Hugging Face)**.</p>
+
+    <input type="text" id="promptInput" placeholder="Enter your image prompt..." />
+    <button onclick="generateImage()">Generate Image</button>
+
+    <div id="imageContainer"></div>
+
+    <script>
 async function generateImage() {
     const prompt = document.getElementById("promptInput").value.trim();
     if (!prompt) {
@@ -35,3 +102,9 @@ async function generateImage() {
         imageContainer.innerHTML = `<p style="color: red;">Failed to generate image. Please try again.</p>`;
     }
 }
+
+
+    </script>
+
+</body>
+</html>
