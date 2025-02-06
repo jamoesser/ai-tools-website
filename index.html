@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>AI Chatbot</title>
     <style>
-        /* Global Dark Theme */
+        /* 🚀 Futuristic Dark Theme */
         body {
-            background-color: #121212;
+            background-color: #0d0d0d;
             color: #ffffff;
             font-family: "Arial", sans-serif;
             margin: 0;
@@ -19,9 +19,10 @@
             height: 100vh;
         }
 
-        /* Navigation Bar */
+        /* 🔷 Navigation Bar */
         nav {
-            background-color: #1e1e1e;
+            background-color: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
             padding: 15px;
             text-align: center;
             width: 100%;
@@ -29,114 +30,150 @@
             top: 0;
             left: 0;
             box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
         }
 
         nav a {
-            color: #00bcd4;
+            color: #00f2ff;
             text-decoration: none;
             margin: 0 15px;
             font-size: 18px;
-            transition: 0.3s;
+            transition: 0.3s ease-in-out;
         }
 
         nav a:hover {
-            color: #008c9e;
+            color: #00bcd4;
+            text-shadow: 0 0 10px #00bcd4;
         }
 
-/* Chat Container */
-#chatContainer {
-    width: 90%;
-    max-width: 800px;
-    background-color: #1e1e1e;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    overflow-y: auto;
-    margin-top: 70px;
-    position: relative; /* ✅ Ensures correct input positioning */
-}
+        /* 🔷 Chat Container */
+        #chatContainer {
+            width: 90%;
+            max-width: 900px;
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+            display: flex;
+            flex-direction: column;
+            height: 80vh;
+            overflow-y: auto;
+            margin-top: 80px;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
 
-/* Chat Output (Bottom Aligned) */
-#chatOutput {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding-bottom: 10px;
-    font-size: 16px;
-    padding-right: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* ✅ Keeps messages at the bottom */
-}
+        /* 🔷 Chat Messages */
+        #chatOutput {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding-bottom: 10px;
+            font-size: 16px;
+            padding-right: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
 
-/* Chat Input Box - Fixed at Bottom */
-#inputContainer {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    width: 100%;
-    background-color: #1e1e1e;
-    position: sticky;
-    bottom: 0;
-}
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
 
-/* Prevent iPhone Zoom & Optimize Input Field */
-#userInput {
-    flex: 1;
-    padding: 12px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    background-color: #2a2a2a;
-    color: white;
-    font-size: 16px;
-    resize: none;
-    height: 50px;
-    min-height: 50px;
-}
+        .message {
+            padding: 12px;
+            border-radius: 8px;
+            max-width: 80%;
+            word-wrap: break-word;
+            display: inline-block;
+            font-size: 15px;
+            transition: all 0.3s ease-in-out;
+        }
 
-/* Send Button */
-button {
-    background-color: #00bcd4;
-    color: black;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.2s;
-    min-width: 80px;
-}
+        .user-message {
+            background: linear-gradient(135deg, #00f2ff, #008c9e);
+            color: #000;
+            align-self: flex-end;
+            text-align: right;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
-button:hover {
-    background-color: #008c9e;
-}
+        .bot-message {
+            background: linear-gradient(135deg, #222, #333);
+            color: #ffffff;
+            align-self: flex-start;
+            text-shadow: 0px 0px 5px rgba(0, 255, 255, 0.4);
+        }
 
-/* Mobile Optimization */
-@media (max-width: 600px) {
-    #chatContainer {
-        width: 95%;
-        height: 85vh;
-        margin-top: 60px;
-        border-radius: 0;
-        padding: 10px;
-    }
+        /* 🔷 Chat Input Container */
+        #inputContainer {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            bottom: 0;
+            border-top: 1px solid rgba(0, 255, 255, 0.3);
+        }
 
-    #userInput {
-        font-size: 16px;
-        height: 45px;
-        min-height: 45px;
-    }
+        /* 🔷 Input Box */
+        #userInput {
+            flex: 1;
+            padding: 14px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background: rgba(50, 50, 50, 0.8);
+            color: white;
+            font-size: 16px;
+            height: 50px;
+            min-height: 50px;
+            box-shadow: inset 0px 0px 10px rgba(0, 255, 255, 0.3);
+        }
 
-    button {
-        font-size: 14px;
-        padding: 10px;
-        min-width: 70px;
-    }
-}
+        /* 🔷 Send Button */
+        button {
+            background: linear-gradient(135deg, #00f2ff, #008c9e);
+            color: black;
+            border: none;
+            padding: 14px 22px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #008c9e, #00bcd4);
+            box-shadow: 0px 0px 10px rgba(0, 255, 255, 0.5);
+        }
+
+        /* 🔷 Mobile Optimization */
+        @media (max-width: 600px) {
+            #chatContainer {
+                width: 95%;
+                height: 85vh;
+                margin-top: 70px;
+                border-radius: 10px;
+                padding: 12px;
+            }
+
+            #userInput {
+                font-size: 15px;
+                height: 45px;
+                min-height: 45px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 12px;
+                min-width: 70px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,7 +192,6 @@ button:hover {
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
-
     <script>
         let messageHistory = []; // ✅ Stores previous messages
 
