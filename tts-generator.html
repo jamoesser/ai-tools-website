@@ -131,7 +131,7 @@
 
     <div class="container">
         <h1>AI Text-to-Speech (TTS) Generator</h1>
-        <p>Enter text below and generate AI speech using Hugging Face.</p>
+        <p>Enter text below and generate AI speech using Hugging Face's Parler-TTS.</p>
 
         <input type="text" id="textInput" placeholder="Enter text..." />
         <button onclick="generateSpeech()">Generate Speech</button>
@@ -152,10 +152,10 @@
 
             try {
                 console.log("🔹 Sending request to Hugging Face API...");
-                const response = await fetch("https://api-inference.huggingface.co/models/coqui/XTTS-v2", {
+                const response = await fetch("https://api-inference.huggingface.co/models/parler-tts/parler-tts-large-v1", {
                     method: "POST",
                     headers: {
-                        "Authorization": "Bearer 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",  // Replace this with your real key
+                        "Authorization": "Bearer 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",  // Replace with your real key
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
