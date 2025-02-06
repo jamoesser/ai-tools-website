@@ -2,70 +2,92 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>AI Image Generator</title>
     <style>
+        /* 🚀 Modern Dark Theme */
         body {
-            font-family: Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            font-family: "Arial", sans-serif;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            margin: 50px;
+            overflow-x: hidden;
         }
-        input, button {
-            margin: 10px;
-            padding: 10px;
+
+        /* 🔷 Navigation Bar */
+        nav {
+            background-color: #111;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #222;
+            font-size: 18px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: 0.3s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #ccc;
+        }
+
+        /* 🔷 Page Container */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            background: #121212;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 100px auto 0;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
+            border: 1px solid #222;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #bbb;
             font-size: 16px;
         }
-        img {
-            margin-top: 20px;
-            max-width: 100%;
-            height: auto;
+
+        /* 🔷 Embedded AI Generator */
+        iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
-    <h2>Free AI Image Generator</h2>
-    <input type="text" id="prompt" placeholder="Enter an image description..." size="50">
-    <button onclick="generateImage()">Generate</button>
+    <!-- Navigation -->
+    <nav>
+        <a href="index.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
+    </nav>
 
-    <p id="status"></p>
-    <img id="outputImage" src="" alt="Generated Image">
+    <div class="container">
+        <h1>AI Image Generator</h1>
+        <p>Generate AI images for free using Stable Diffusion.</p>
 
-    <script>
-        async function generateImage() {
-            const prompt = document.getElementById("prompt").value;
-            if (!prompt) {
-                alert("Please enter a description!");
-                return;
-            }
-
-            document.getElementById("status").innerText = "Generating image... Please wait.";
-            document.getElementById("outputImage").src = "";
-
-            const API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2";
-            const API_KEY = "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"; // Replace with your actual Hugging Face API key.
-
-            const response = await fetch(API_URL, {
-                method: "POST",
-                headers: {
-                    "Authorization": `Bearer ${API_KEY}`,
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ inputs: prompt })
-            });
-
-            if (!response.ok) {
-                document.getElementById("status").innerText = "Error generating image.";
-                return;
-            }
-
-            const blob = await response.blob();
-            const imageUrl = URL.createObjectURL(blob);
-            
-            document.getElementById("status").innerText = "Image generated successfully!";
-            document.getElementById("outputImage").src = imageUrl;
-        }
-    </script>
+        <!-- 🔹 Embedded AI Image Generator -->
+        <iframe src="https://replicate.com/stability-ai/stable-diffusion"></iframe>
+    </div>
 
 </body>
 </html>
