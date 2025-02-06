@@ -43,12 +43,12 @@
         /* 🔷 Page Container */
         .container {
             width: 90%;
-            max-width: 800px;
+            max-width: 900px;
             background: #121212;
             border-radius: 12px;
             padding: 20px;
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
             margin: 100px auto 0;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
             border: 1px solid #222;
         }
 
@@ -62,45 +62,13 @@
             font-size: 16px;
         }
 
-        /* 🔷 Input & Button */
-        #promptInput {
-            width: 80%;
-            max-width: 600px;
-            padding: 14px;
-            border-radius: 8px;
+        /* 🔷 Embedded AI Generator */
+        iframe {
+            width: 100%;
+            height: 600px;
             border: none;
-            background: #222;
-            color: white;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-        }
-
-        button {
-            padding: 14px 22px;
-            font-size: 16px;
-            margin-top: 15px;
-            background: #444;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #666;
-        }
-
-        /* 🔷 Image Display */
-        #imageContainer {
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
             border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+            margin-top: 15px;
         }
     </style>
 </head>
@@ -115,61 +83,11 @@
 
     <div class="container">
         <h1>AI Image Generator</h1>
-        <p>Enter a prompt and generate an AI image using **Stable Diffusion (Stability AI API)**.</p>
+        <p>Generate AI images for free using Hugging Face’s Stable Diffusion.</p>
 
-        <input type="text" id="promptInput" placeholder="Enter your image prompt..." />
-        <button onclick="generateImage()">Generate Image</button>
-
-        <div id="imageContainer"></div>
+        <!-- 🔹 Embedded Hugging Face Stable Diffusion -->
+        <iframe src="https://huggingface.co/spaces/CompVis/stable-diffusion"></iframe>
     </div>
-
-    <script>
- async function generateImage() {
-    const prompt = document.getElementById("promptInput").value.trim();
-    if (!prompt) {
-        alert("Please enter a prompt!");
-        return;
-    }
-
-    const imageContainer = document.getElementById("imageContainer");
-    imageContainer.innerHTML = "<p>Generating image... Please wait. ⏳</p>";
-
-    try {
-        console.log("🔹 Sending request to Stability AI API...");
-        const response = await fetch("https://api.stability.ai/v2beta/stable-image/generate/core", {
-            method: "POST",
-            headers: {
-                "Authorization": "Bearer sk-lEuQVCTNjR74ymKONsyOAmuCqdAL6lRjNp34bRBeViXOvCjB",  // Replace with actual key
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                prompt: prompt,
-                output_format: "jpeg"
-            })
-        });
-
-        console.log("🔹 API Response Status:", response.status);
-
-        const data = await response.json();
-        console.log("🔹 API Response Data:", data);
-
-        if (!response.ok) {
-            throw new Error(`API Error: ${response.status}`);
-        }
-
-        if (data && data.image) {
-            imageContainer.innerHTML = `<img src="data:image/jpeg;base64,${data.image}" alt="Generated Image">`;
-        } else {
-            imageContainer.innerHTML = `<p style="color: red;">Error: No image returned.</p>`;
-        }
-
-    } catch (error) {
-        console.error("🚨 Error generating image:", error);
-        imageContainer.innerHTML = `<p style="color: red;">Failed to generate image. Please try again.</p>`;
-    }
-}
-
-    </script>
 
 </body>
 </html>
