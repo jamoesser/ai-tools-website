@@ -43,121 +43,100 @@
             color: #008c9e;
         }
 
-        /* Chat Container */
-        #chatContainer {
-            width: 90%;
-            max-width: 800px;
-            background-color: #1e1e1e;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
-            display: flex;
-            flex-direction: column-reverse;
-            height: 80vh;
-            overflow-y: auto;
-            margin-top: 70px;
-        }
+/* Chat Container */
+#chatContainer {
+    width: 90%;
+    max-width: 800px;
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    overflow-y: auto;
+    margin-top: 70px;
+    position: relative; /* ✅ Ensures correct input positioning */
+}
 
-        #chatOutput {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding-bottom: 10px;
-            font-size: 16px;
-            padding-right: 10px;
-            display: flex;
-            flex-direction: column-reverse; /* ✅ Makes chat go from bottom to top */
-        }
+/* Chat Output (Bottom Aligned) */
+#chatOutput {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-bottom: 10px;
+    font-size: 16px;
+    padding-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* ✅ Keeps messages at the bottom */
+}
 
-        .message-container {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-        }
+/* Chat Input Box - Fixed at Bottom */
+#inputContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #1e1e1e;
+    position: sticky;
+    bottom: 0;
+}
 
-        .message {
-            padding: 10px;
-            border-radius: 8px;
-            max-width: 80%;
-            word-wrap: break-word;
-            display: inline-block;
-        }
+/* Prevent iPhone Zoom & Optimize Input Field */
+#userInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #2a2a2a;
+    color: white;
+    font-size: 16px;
+    resize: none;
+    height: 50px;
+    min-height: 50px;
+}
 
-        .user-message {
-            background-color: #00bcd4;
-            color: #000;
-            align-self: flex-end;
-            text-align: right;
-        }
+/* Send Button */
+button {
+    background-color: #00bcd4;
+    color: black;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+    min-width: 80px;
+}
 
-        .bot-message {
-            background-color: #333;
-            color: #fff;
-            align-self: flex-start;
-        }
+button:hover {
+    background-color: #008c9e;
+}
 
-        /* Chat Input Container */
-        #inputContainer {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding-top: 10px;
-            width: 100%;
-        }
+/* Mobile Optimization */
+@media (max-width: 600px) {
+    #chatContainer {
+        width: 95%;
+        height: 85vh;
+        margin-top: 60px;
+        border-radius: 0;
+        padding: 10px;
+    }
 
-        /* Prevent iPhone Zoom & Optimize Input Field */
-        #userInput {
-            flex: 1;
-            padding: 12px;
-            border-radius: 5px;
-            border: none;
-            outline: none;
-            background-color: #2a2a2a;
-            color: white;
-            font-size: 16px;
-            resize: none;
-            height: 50px;
-            min-height: 50px;
-        }
+    #userInput {
+        font-size: 16px;
+        height: 45px;
+        min-height: 45px;
+    }
 
-        /* Send Button */
-        button {
-            background-color: #00bcd4;
-            color: black;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: 0.2s;
-            min-width: 80px;
-        }
-
-        button:hover {
-            background-color: #008c9e;
-        }
-
-        /* Mobile Optimization */
-        @media (max-width: 600px) {
-            #chatContainer {
-                width: 95%;
-                height: 85vh;
-                margin-top: 60px;
-                border-radius: 0;
-                padding: 10px;
-            }
-
-            #userInput {
-                font-size: 16px;
-                height: 45px;
-                min-height: 45px;
-            }
-
-            button {
-                font-size: 14px;
-                padding: 10px;
-                min-width: 70px;
-            }
-        }
+    button {
+        font-size: 14px;
+        padding: 10px;
+        min-width: 70px;
+    }
+}
     </style>
 </head>
 <body>
