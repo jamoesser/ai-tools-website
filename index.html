@@ -180,7 +180,7 @@
 
     <!-- Chatbot Script -->
     <script>
-let messageHistory = []; // ✅ Stores previous messages for better conversation flow
+let messageHistory = []; // Stores previous messages
 
 async function sendMessage() {
     const userInputElement = document.getElementById("userInput");
@@ -188,7 +188,7 @@ async function sendMessage() {
     const userInput = userInputElement.value.trim();
     if (!userInput) return;
 
-    // ✅ Add user message to history
+    // Add user message to history
     messageHistory.push({ role: "user", content: userInput });
 
     // Create user message container
@@ -196,7 +196,7 @@ async function sendMessage() {
     userMessageContainer.className = "message-container";
     userMessageContainer.innerHTML = `<p class="message user-message"><b>You:</b> ${userInput}</p>`;
 
-    // Create bot message container (Loading state)
+    // Create bot message container (Thinking...)
     const botMessageContainer = document.createElement("div");
     botMessageContainer.className = "message-container";
     botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> <i>Thinking...</i></p>`;
@@ -204,80 +204,47 @@ async function sendMessage() {
     chatOutput.appendChild(userMessageContainer);
     chatOutput.appendChild(botMessageContainer);
 
-    userInputElement.value = ""; // ✅ Clear input field
+    userInputElement.value = ""; // Clear input field
 
     try {
+        console.log("Sending request to API...");
+
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": "Bearer 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", // ✅ Replace with your API key
+                "Authorization": "Bearer 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", // Replace with actual API Key
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "llama-3.3-70b-versatile",  // ✅ Change if needed
-                messages: messageHistory,  // ✅ Sends full chat history
-                temperature: 1.0,  // ✅ Higher randomness for variation
+                model: "llama-3.3-70b-versatile",
+                messages: messageHistory,
+                temperature: 1.0,
                 max_tokens: 100
             })
         });
 
+        console.log("API Response Status:", response.status);
         const data = await response.json();
+        console.log("API Response:", data);
+
         let botResponse = "Sorry, I couldn't understand.";
 
         if (data.choices && data.choices.length > 0) {
             botResponse = data.choices[0].message.content;
         }
 
-        // ✅ Add bot response to message history
+        // Add bot response to history
         messageHistory.push({ role: "assistant", content: botResponse });
 
-        // ✅ Update bot response on the UI
+        // Update bot response
         botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
 
     } catch (error) {
         console.error("API error:", error);
         botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error connecting to API.</p>`;
     }
-
-    // ✅ Auto-scroll to bottom for better UX
-    chatOutput.scrollTop = chatOutput.scrollHeight;
 }
 
-            try {
-                const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
-                    method: "POST",
-                    headers: {
-                        "Authorization": "Bearer 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",  // Replace with actual API Key
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        model: "llama-3.3-70b-versatile",
-                        messages: [{ role: "user", content: userInput }],
-                        temperature: 1.0,
-                        max_tokens: 100
-                    })
-                });
-
-                const data = await response.json();
-                let botResponse = "Sorry, I couldn't understand.";
-
-                if (data.choices && data.choices.length > 0) {
-                    botResponse = data.choices[0].message.content;
-                } else {
-                    console.error("Unexpected API Response:", data);
-                }
-
-                // Update bot response and remove "Thinking..."
-                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> ${botResponse}</p>`;
-
-            } catch (error) {
-                botMessageContainer.innerHTML = `<p class="message bot-message"><b>Bot:</b> Error connecting to API.</p>`;
-                console.error("API error:", error);
-            }
-
-            // Scroll to bottom after response
-            chatOutput.scrollTop = chatOutput.scrollHeight;
-        }
 
         // Press "Enter" to send
         function handleKeyPress(event) {
