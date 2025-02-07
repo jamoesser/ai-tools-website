@@ -1,35 +1,33 @@
-/* Global Styling */
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 body {
     background-color: #121212;
     color: white;
     text-align: center;
-    margin: 0;
-    padding: 0;
 }
 
-/* Navigation Bar */
+/* Navbar */
 .navbar {
     display: flex;
     justify-content: center;
     gap: 20px;
+    background: #1e1e1e;
     padding: 15px;
-    background: #1a1a1a;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .navbar a {
-    color: white;
     text-decoration: none;
+    color: white;
     font-size: 18px;
-    transition: 0.3s;
-    padding: 10px;
+    padding: 10px 15px;
+    transition: 0.3s ease-in-out;
     border-radius: 5px;
 }
 
@@ -38,9 +36,9 @@ body {
     color: black;
 }
 
-/* Container */
+/* Containers */
 .container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 50px auto;
     padding: 20px;
     background: #1e1e1e;
@@ -48,70 +46,17 @@ body {
     box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
 }
 
-/* Home Page Grid Layout */
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
+/* Headings */
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
-/* Tool Cards */
-.tool-card {
-    background: #242424;
-    padding: 20px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: white;
-    transition: 0.3s ease-in-out;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    border: 1px solid #00ff99;
-}
-
-.tool-card:hover {
-    background: #00ff99;
-    color: black;
-    transform: translateY(-5px);
-}
-
-/* Chatbot Styling */
-.chatbox {
-    background: #1e1e1e;
-    width: 80%;
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
-    height: 400px;
-    overflow-y: auto;
-}
-
-.message {
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 8px;
-    max-width: 75%;
-}
-
-.user-message {
-    background: #00ff99;
-    color: black;
-    align-self: flex-end;
-    text-align: right;
-    margin-left: auto;
-}
-
-.bot-message {
-    background: #242424;
-    text-align: left;
-    align-self: flex-start;
-}
-
-/* Fix Input Fields Across All Pages */
-input[type="text"] {
-    width: 80%;
-    padding: 10px;
+/* Input Fields */
+input {
+    width: 100%;
+    padding: 12px;
     border-radius: 5px;
     border: 1px solid #444;
     background: #242424;
@@ -121,81 +66,159 @@ input[type="text"] {
     transition: 0.3s ease-in-out;
 }
 
-input[type="text"]:focus {
+input:focus {
     border: 1px solid #00ff99;
     box-shadow: 0px 0px 10px rgba(0, 255, 153, 0.5);
 }
 
-/* Fix Button Styling Across Pages */
-button {
+/* Buttons */
+.button {
     background: #00ff99;
     color: black;
     border: none;
-    padding: 10px 15px;
+    padding: 12px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #00cc77;
+}
+
+/* Home Page - Cards */
+.tool-cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.tool-card {
+    background: #1e1e1e;
+    padding: 20px;
+    border-radius: 10px;
+    width: 220px;
+    text-align: center;
+    box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+.tool-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 5px 25px rgba(0, 255, 153, 0.3);
+}
+
+.tool-card a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Chatbot Page */
+.chatbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
+}
+
+.chatbox {
+    background: #1e1e1e;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    height: 400px;
+    overflow-y: auto;
+    box-shadow: inset 0px 0px 10px rgba(0, 255, 153, 0.3);
+}
+
+.chat-input-container {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.chat-input-container input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 5px;
+    border: 1px solid #444;
+    background: #242424;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.chat-input-container input:focus {
+    border: 1px solid #00ff99;
+    box-shadow: 0px 0px 10px rgba(0, 255, 153, 0.5);
+}
+
+.chat-input-container button {
+    margin-left: 10px;
+    background: #00ff99;
+    color: black;
+    border: none;
+    padding: 12px 20px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
     transition: 0.3s ease-in-out;
 }
 
-button:hover {
+.chat-input-container button:hover {
     background: #00cc77;
 }
 
 /* Image Generator */
-.image-generator-container {
+.image-container {
     text-align: center;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
+    margin-top: 20px;
 }
 
-.generated-image {
-    width: 100%;
-    margin-top: 20px;
+#imageResult img {
+    max-width: 100%;
     border-radius: 10px;
-    display: block;
+    margin-top: 10px;
 }
 
 /* Progress Bar */
-.progress-container {
+#progressContainer {
     width: 100%;
-    background: #333;
+    background: #444;
     border-radius: 5px;
-    margin-top: 20px;
+    overflow: hidden;
     display: none;
+    margin-top: 15px;
 }
 
-.progress-fill {
+#progressFill {
     height: 10px;
     width: 0%;
     background: #00ff99;
-    border-radius: 5px;
     transition: width 0.5s ease-in-out;
-}
-
-.progress-text {
-    color: white;
-    margin-top: 5px;
 }
 
 /* TTS Generator */
 .tts-container {
     text-align: center;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #1e1e1e;
-    border-radius: 10px;
-    box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
 }
 
-/* Footer */
-footer {
-    margin-top: 30px;
-    font-size: 14px;
-    color: #ccc;
+.tts-container audio {
+    margin-top: 15px;
+    width: 100%;
 }
