@@ -10,6 +10,9 @@ body {
     background: #121212;
     color: white;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ✅ Ensures content expands to full screen height */
 }
 
 /* 🔷 Centered Navigation Bar */
@@ -157,11 +160,14 @@ button:hover {
     background: #009ce0;
 }
 
-/* 🔻 Footer */
+/* 🔻 Footer (Fix Overlapping Issue) */
 footer {
-    padding: 20px;
-    margin-top: 40px;
+    width: 100%;
+    text-align: center;
+    padding: 15px;
     background: #1a1a1a;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
+    position: relative; /* ✅ Change from absolute to relative */
+    margin-top: auto; /* ✅ Ensures it pushes below content */
 }
