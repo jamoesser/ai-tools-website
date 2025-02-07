@@ -1,4 +1,3 @@
-    <script>
         let messageHistory = [];
 
         async function sendMessage() {
@@ -51,4 +50,4 @@
                 sendMessage();
             }
         }
-    </script>
+
