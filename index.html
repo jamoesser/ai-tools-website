@@ -7,48 +7,51 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- Navigation -->
+    <!-- Navigation Bar -->
     <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="image-generator.html">Image Generator</a>
-            <a href="tts-generator.html">TTS Generator</a>
-        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chatbot.html">Chatbot</a></li>
+            <li><a href="image-generator.html">Image Generator</a></li>
+            <li><a href="tts-generator.html">TTS Generator</a></li>
+        </ul>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Welcome to AI Tools Hub</h1>
-        <p>Explore powerful AI tools for text, image generation, and text-to-speech.</p>
-    </section>
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Explore Powerful AI Tools</h1>
+        <p>Enhance your creativity with AI for text, image generation, and text-to-speech.</p>
 
-    <!-- Features Section -->
-    <section class="features">
-        <div class="feature">
-            <img src="images/chatbot.png" alt="AI Chatbot">
-            <h2>AI Chatbot</h2>
-            <p>Engage with an intelligent AI assistant for instant responses.</p>
-            <a href="chatbot.html" class="btn">Try Now</a>
-        </div>
-        <div class="feature">
-            <img src="images/image-generator.png" alt="AI Image Generator">
-            <h2>AI Image Generator</h2>
-            <p>Create stunning AI-generated images from text prompts.</p>
-            <a href="image-generator.html" class="btn">Try Now</a>
-        </div>
-        <div class="feature">
-            <img src="images/text-to-speech.png" alt="AI Text to Speech">
-            <h2>Text-to-Speech</h2>
-            <p>Convert text into natural, AI-generated speech.</p>
-            <a href="tts-generator.html" class="btn">Try Now</a>
-        </div>
-    </section>
+        <div class="tools-grid">
+            <!-- AI Chatbot -->
+            <div class="tool">
+                <img src="images/chatbot-icon.png" alt="AI Chatbot" class="tool-icon">
+                <h2>AI Chatbot</h2>
+                <p>Engage with an intelligent AI assistant for instant responses.</p>
+                <a href="chatbot.html" class="btn">Try Now</a>
+            </div>
 
+            <!-- AI Image Generator -->
+            <div class="tool">
+                <img src="images/image-gen-icon.png" alt="AI Image Generator" class="tool-icon">
+                <h2>AI Image Generator</h2>
+                <p>Create stunning AI-generated images from text prompts.</p>
+                <a href="image-generator.html" class="btn">Try Now</a>
+            </div>
+
+            <!-- AI Text-to-Speech -->
+            <div class="tool">
+                <img src="images/tts-icon.png" alt="AI Text-to-Speech" class="tool-icon">
+                <h2>Text-to-Speech</h2>
+                <p>Convert text into natural, AI-generated speech.</p>
+                <a href="tts-generator.html" class="btn">Try Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        © 2025 AI Tools Hub - Powered by AI
+        <p>&copy; 2025 AI Tools Hub - Powered by AI</p>
     </footer>
-
 </body>
 </html>
