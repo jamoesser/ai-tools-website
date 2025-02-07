@@ -62,24 +62,19 @@
             progressText.innerText = "Starting...";
             progressContainer.style.display = "block";
 
-            try {
-                console.log("🔹 Sending request to Hugging Face API...");
-
-                // Simulated Progress Updates
-                let progress = 0;
-                const progressInterval = setInterval(() => {
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                if (progress < 100) {
                     progress += 25;
                     progressFill.style.width = `${progress}%`;
                     if (progress === 25) progressText.innerText = "Generating base image...";
                     if (progress === 50) progressText.innerText = "Adding details...";
                     if (progress === 75) progressText.innerText = "Finalizing...";
-                    if (progress >= 100) {
-                        clearInterval(progressInterval);
-                        progressText.innerText = "Done!";
-                    }
-                }, 2000);
+                }
+            }, 2000); // Adjusted for smoother progression
 
-                // API Call
+            try {
+                console.log("🔹 Sending request to Hugging Face API...");
                 const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-dev", {
                     method: "POST",
                     headers: {
@@ -89,19 +84,18 @@
                     body: JSON.stringify({ inputs: prompt })
                 });
 
-                console.log("🔹 API Response Status:", response.status);
-
                 if (!response.ok) {
-                    const errorText = await response.text();
-                    console.error("🚨 API Error Response:", errorText);
-                    throw new Error(`API Error: ${response.status} - ${errorText}`);
+                    throw new Error(`API Error: ${response.status} - ${await response.text()}`);
                 }
 
-                // Get image blob
+                // Image is ready
+                clearInterval(progressInterval);
+                progressFill.style.width = "100%";
+                progressText.innerText = "Image Ready!";
+
                 const blob = await response.blob();
                 const imageUrl = URL.createObjectURL(blob);
 
-                // Show Image
                 imageResult.innerHTML = `
                     <p><b>Generated Image:</b></p>
                     <img src="${imageUrl}" alt="AI Generated Image">
@@ -115,7 +109,9 @@
                 console.error("🚨 Error generating image:", error);
                 imageResult.innerHTML = `<p style="color: red;">Failed to generate image. Please try again.</p>`;
             } finally {
-                progressContainer.style.display = "none"; // Hide progress bar
+                setTimeout(() => {
+                    progressContainer.style.display = "none"; // Hide progress bar only after the image is loaded
+                }, 1000);
             }
         }
     </script>
