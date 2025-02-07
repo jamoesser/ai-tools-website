@@ -33,14 +33,14 @@
 
     <script>
         async function generateImage() {
-            const prompt = document.getElementById("promptInput").value.trim();
+            const prompt = document.getElementById("imagePrompt").value.trim();
             if (!prompt) {
                 alert("Please enter a prompt!");
                 return;
             }
 
-            const imageContainer = document.getElementById("imageContainer");
-            imageContainer.innerHTML = `<div class="loader"></div>`;
+            const imageResult = document.getElementById("imageResult");
+            imageResult.innerHTML = `<div class="loader"></div><p>Generating image for: <strong>${prompt}</strong>...</p>`;
 
             try {
                 console.log("🔹 Sending request to Hugging Face API...");
@@ -66,19 +66,18 @@
                 const blob = await response.blob();
                 const imageUrl = URL.createObjectURL(blob);
 
-imageContainer.innerHTML = `
-    <p><b>Generated Image:</b></p>
-    <img src="${imageUrl}" alt="AI Generated Image">
-    <br>
-    <a href="${imageUrl}" download="AI-Generated-Image.jpg">
-        <button>Download Image</button>
-    </a>
-`;
-
+                imageResult.innerHTML = `
+                    <p><b>Generated Image:</b></p>
+                    <img src="${imageUrl}" alt="AI Generated Image">
+                    <br>
+                    <a href="${imageUrl}" download="AI-Generated-Image.jpg">
+                        <button>Download Image</button>
+                    </a>
+                `;
 
             } catch (error) {
                 console.error("🚨 Error generating image:", error);
-                imageContainer.innerHTML = `<p style="color: red;">Failed to generate image. Please try again.</p>`;
+                imageResult.innerHTML = `<p style="color: red;">Failed to generate image. Please try again.</p>`;
             }
         }
     </script>
