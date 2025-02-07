@@ -3,24 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Tools Hub</title>
+    <title>AI Chatbot</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="index.html" class="active">Home</a>
-        <a href="chatbot.html">Chatbot</a>
+        <a href="index.html">Home</a>
+        <a href="chatbot.html" class="active">Chatbot</a>
         <a href="image-generator.html">Image Generator</a>
         <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
     <div class="container">
-        <h1>Explore Powerful AI Tools</h1>
-        <p>Enhance your creativity with AI for text, images, and speech.</p>
+        <h1>AI Chatbot</h1>
+        <div id="chatbox" class="chatbox"></div>
+
+        <div class="input-area">
+            <textarea id="userInput" placeholder="Type your message..." onkeypress="handleKeyPress(event)"></textarea>
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
 
-    <footer>© 2025 AI Tools Hub - Powered by AI</footer>
+    <script src="chatbot.js"></script>
 
 </body>
 </html>
