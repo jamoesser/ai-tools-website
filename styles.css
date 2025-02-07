@@ -12,13 +12,13 @@ body {
     text-align: center;
 }
 
-/* 🔷 Navigation */
+/* 🔷 Centered Navigation Bar */
 nav {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center links horizontally */
     align-items: center;
     background: #1a1a1a;
-    padding: 15px 20px;
+    padding: 15px;
     position: fixed;
     width: 100%;
     top: 0;
@@ -26,22 +26,23 @@ nav {
     border-bottom: 1px solid #333;
 }
 
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
+.nav-links {
+    display: flex;
+    gap: 25px; /* Space between links */
 }
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    margin: 0 15px;
     font-weight: 500;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
 .nav-links a:hover {
     color: #00c6ff;
 }
+
 
 /* 🌟 Page Title */
 .page-title {
