@@ -209,8 +209,8 @@ button:hover {
     background: #009ce0;
 }
 
-/* 🌟 Image Generator & TTS Styling */
-.image-container, .tts-container {
+/* 🌟 Image Generator Styling */
+.image-container {
     margin-top: 100px;
     width: 90%;
     max-width: 700px;
@@ -221,18 +221,18 @@ button:hover {
     text-align: center;
 }
 
-.image-container h1, .tts-container h1 {
+.image-container h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.image-container p, .tts-container p {
+.image-container p {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
 }
 
-/* 🔲 Input & Button Styling */
+/* 🔲 Input & Button */
 .input-group {
     display: flex;
     justify-content: center;
@@ -267,12 +267,33 @@ button:hover {
     background: #009ce0;
 }
 
-/* 🔲 Generated Content */
-#imageResult img, #ttsResult audio {
+/* 🔲 Progress Bar */
+.progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #00c6ff;
+    transition: width 0.5s ease-in-out;
+}
+
+/* 🔲 Generated Image */
+#imageResult {
+    margin-top: 20px;
+}
+
+#imageResult img {
     width: 100%;
     max-width: 512px;
     border-radius: 10px;
-    margin-top: 20px;
 }
 
 /* 🔲 Footer */
