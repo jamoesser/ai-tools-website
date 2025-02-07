@@ -1,4 +1,4 @@
-/* 🌟 General Styles */
+/* 🌟 General Styling */
 * {
     margin: 0;
     padding: 0;
@@ -11,8 +11,9 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     min-height: 100vh;
-    overflow: hidden;
 }
 
 /* 🔷 Navigation Bar */
@@ -47,100 +48,71 @@ nav {
     color: #00c6ff;
 }
 
-/* 🌟 Chatbot Container */
-.chat-container {
+/* 🌟 Hero Section */
+.hero {
+    margin-top: 100px;
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+}
+
+.hero h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 🌟 Features Section */
+.features {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
+    gap: 20px;
+    width: 90%;
     max-width: 800px;
-    height: calc(100vh - 140px); /* Full height minus nav & input */
+    margin-top: 30px;
+}
+
+.feature {
     background: #1e1e1e;
-    border-radius: 12px;
-    padding: 15px;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
     border: 1px solid #292929;
-    margin: auto;
-    margin-top: 80px;
-    overflow-y: auto;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
 }
 
-/* 🔲 Chat Messages (Bubbles) */
-#chatOutput {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 800px;
-    padding-bottom: 10px;
-    overflow-y: auto;
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
 
-/* ✅ Bot Message (Left) */
-.bot-message {
-    background: #2c2d30;
-    color: white;
-    padding: 12px;
-    border-radius: 15px;
-    margin: 5px 10px;
-    max-width: 75%;
-    align-self: flex-start;
-    text-align: left;
-}
-
-/* ✅ User Message (Right) */
-.user-message {
-    background: #0084ff;
-    color: white;
-    padding: 12px;
-    border-radius: 15px;
-    margin: 5px 10px;
-    max-width: 75%;
-    align-self: flex-end;
-    text-align: left;
-}
-
-/* 📝 Input Box & Send Button (Fixed at Bottom) */
-#inputContainer {
-    display: flex;
-    width: 100%;
-    max-width: 800px;
-    position: fixed;
-    bottom: 0;
-    background: #1e1e1e;
-    padding: 10px;
-    border-top: 1px solid #292929;
-    z-index: 10;
-}
-
-#userInput {
-    flex: 1;
-    padding: 12px;
-    border-radius: 8px;
-    border: none;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
+.feature p {
     font-size: 16px;
-    outline: none;
-    resize: none;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 15px;
 }
 
-button {
-    padding: 12px 20px;
-    border-radius: 8px;
+/* 🔘 Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
     background: #00c6ff;
     color: white;
-    border: none;
+    text-decoration: none;
+    border-radius: 8px;
     font-weight: bold;
-    cursor: pointer;
-    margin-left: 10px;
+    transition: background 0.3s ease;
 }
 
-button:hover {
+.btn:hover {
     background: #009ce0;
 }
 
-/* 🔲 Footer (Fixed to Bottom, No Overlapping) */
+/* 🔲 Footer (Fixed to Bottom) */
 footer {
     width: 100%;
     text-align: center;
@@ -148,6 +120,6 @@ footer {
     background: #1a1a1a;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
-    position: fixed;
-    bottom: 0;
+    position: relative;
+    margin-top: auto;
 }
