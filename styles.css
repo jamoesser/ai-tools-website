@@ -48,71 +48,73 @@ nav {
     color: #00c6ff;
 }
 
-/* 🌟 Hero Section */
-.hero {
+/* 🌟 Image Generator Styling */
+.image-container {
     margin-top: 100px;
-    text-align: center;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* 🌟 Features Section */
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
     width: 90%;
-    max-width: 800px;
-    margin-top: 30px;
-}
-
-.feature {
-    background: #1e1e1e;
+    max-width: 700px;
     padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #292929;
+    background: #1e1e1e;
+    border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
+    text-align: center;
 }
 
-.feature h2 {
-    font-size: 24px;
+.image-container h1 {
+    font-size: 28px;
     margin-bottom: 10px;
 }
 
-.feature p {
+.image-container p {
     font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
 }
 
-/* 🔘 Buttons */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
+/* 🔲 Input & Button */
+.input-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 70%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+.input-group button {
+    padding: 12px 20px;
+    border-radius: 8px;
     background: #00c6ff;
     color: white;
-    text-decoration: none;
-    border-radius: 8px;
+    border: none;
     font-weight: bold;
-    transition: background 0.3s ease;
+    cursor: pointer;
 }
 
-.btn:hover {
+.input-group button:hover {
     background: #009ce0;
 }
 
-/* 🔲 Footer (Fixed to Bottom) */
+/* 🔲 Generated Image */
+#imageResult img {
+    width: 100%;
+    max-width: 512px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+/* 🔲 Footer */
 footer {
     width: 100%;
     text-align: center;
