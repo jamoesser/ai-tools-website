@@ -8,7 +8,7 @@ body {
     padding: 0;
 }
 
-/* 📌 NAVIGATION BAR (Applies to All Pages) */
+/* 📌 NAVIGATION BAR */
 nav {
     background: #1e1e1e;
     padding: 15px 0;
@@ -38,18 +38,21 @@ nav {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* 💬 CHATBOT STYLING */
+/* 💬 CHATBOT STYLING (Fully Centered) */
 .chat-container {
     width: 90%;
     max-width: 600px;
-    margin: 120px auto 20px;
+    height: 400px;
+    margin: 120px auto; /* Centers the chatbox */
     padding: 20px;
     background: #1e1e1e;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
     text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow-y: auto;
-    height: 400px;
 }
 
 /* 📩 Chat Messages */
@@ -57,33 +60,41 @@ nav {
     padding: 10px;
     border-radius: 8px;
     margin: 8px 0;
+    width: fit-content;
+    max-width: 85%;
 }
 
 .message.user {
     background: #00c6ff;
     color: #fff;
     text-align: right;
+    align-self: flex-end;
 }
 
 .message.bot {
     background: rgba(255, 255, 255, 0.1);
     color: white;
     text-align: left;
+    align-self: flex-start;
 }
 
-/* ✍️ Chat Input */
+/* ✍️ Chat Input (Fixed & Centered) */
 .chat-input {
+    width: 100%;
+    max-width: 600px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     padding: 15px;
     background: #1e1e1e;
-    position: fixed;
-    bottom: 0;
-    left: 0;
+    border-radius: 10px;
 }
 
+/* 📌 Input Field */
 .chat-input input {
     flex: 1;
     padding: 12px;
@@ -93,8 +104,11 @@ nav {
     color: white;
     font-size: 16px;
     outline: none;
+    text-align: center;
+    width: 70%;
 }
 
+/* 📌 Send Button */
 .chat-input button {
     margin-left: 10px;
     padding: 12px 20px;
@@ -122,17 +136,6 @@ nav {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-.image-container h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.image-container p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 20px;
 }
 
 /* 📸 Generated Image Display */
@@ -177,17 +180,6 @@ nav {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-}
-
-.tts-container h1 {
-    font-size: 28px;
-    margin-bottom: 10px;
-}
-
-.tts-container p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.8);
-    margin-bottom: 20px;
 }
 
 /* 🔊 TTS Generated Audio */
