@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="chatbot.html">Chatbot</a>
@@ -15,11 +14,21 @@
         <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
-    <div class="container">
+    <div class="image-container">
         <h1>AI Image Generator</h1>
+        <p>Enter a description to generate an AI image.</p>
+        
         <input type="text" id="imagePrompt" placeholder="Describe the image you want...">
-        <button onclick="generateImage()">Generate</button>
-        <img id="generatedImage" class="generated-image" style="display:none;">
+        <button class="generate-btn" onclick="generateImage()">Generate</button>
+
+        <!-- Progress Bar -->
+        <div id="progressContainer" class="progress-container" style="display: none;">
+            <div id="progressBar" class="progress-bar"></div>
+            <p id="progressText">Initializing...</p>
+        </div>
+
+        <!-- Result Display -->
+        <div id="imageResult" class="image-result"></div>
     </div>
 
     <script>
@@ -77,7 +86,7 @@
 
                 imageResult.innerHTML = `
                     <p><b>Generated Image:</b></p>
-                    <img src="${imageUrl}" alt="AI Generated Image">
+                    <img src="${imageUrl}" alt="AI Generated Image" class="generated-image">
                     <br>
                     <a href="${imageUrl}" download="AI-Generated-Image.jpg">
                         <button class="download-btn">Download Image</button>
@@ -94,6 +103,5 @@
             }
         }
     </script>
-
 </body>
 </html>
