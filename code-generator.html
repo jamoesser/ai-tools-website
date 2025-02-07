@@ -64,18 +64,25 @@
             }, 1500); 
 
             try {
-                console.log("🔹 Sending request to API...");
+                console.log("🔹 Sending request to Hugging Face API...");
                 const response = await fetch("https://api-inference.huggingface.co/models/bigcode/starcoder", {
                     method: "POST",
                     headers: {
                         "Authorization": "Bearer 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", 
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ inputs: prompt })
+                    body: JSON.stringify({
+                        inputs: prompt,
+                        parameters: {
+                            max_length: 300,  // Ensures longer code outputs
+                            temperature: 0.7  // Controls randomness
+                        }
+                    })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API Error: ${response.status} - ${await response.text()}`);
+                    const errorMessage = await response.text();
+                    throw new Error(`API Error: ${response.status} - ${errorMessage}`);
                 }
 
                 clearInterval(progressInterval);
@@ -83,7 +90,9 @@
                 progressText.innerText = "Code Ready!";
 
                 const data = await response.json();
-                const generatedCode = data.generated_text || "Error: No code generated.";
+
+                // Fix: Extracting text properly from API response
+                let generatedCode = data.choices ? data.choices[0].text.trim() : "Error: No code generated.";
 
                 codeResult.innerHTML = `
                     <p><b>Generated Code:</b></p>
