@@ -1,4 +1,4 @@
-/* 🌟 General Styling */
+/* 🌟 General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     text-align: center;
 }
 
-/* 🔷 Navigation Bar */
+/* 🔷 Navigation */
 nav {
     display: flex;
     justify-content: space-between;
@@ -43,23 +43,68 @@ nav {
     color: #00c6ff;
 }
 
-/* 🌟 Hero Section */
-.hero {
+/* 🌟 Page Title */
+.page-title {
     margin-top: 120px;
     text-align: center;
 }
 
-.hero h1 {
-    font-size: 36px;
+.page-title h1 {
+    font-size: 32px;
     font-weight: bold;
 }
 
-.hero p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.7);
+.page-title p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
 }
 
-/* 🔲 AI Tools Section */
+/* 🔲 Container Styling (Consistent Across All Pages) */
+.container {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 40px auto;
+    box-shadow: 0px 4px 10px rgba(0, 255, 255, 0.1);
+    border: 1px solid #292929;
+}
+
+/* 📝 Inputs and Buttons */
+input, textarea {
+    width: 80%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+}
+
+input::placeholder, textarea::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+    padding: 14px 22px;
+    font-size: 16px;
+    margin-top: 15px;
+    background: #00c6ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #009ce0;
+}
+
+/* 🔲 Tool Cards (For Home Page) */
 .tools-container {
     display: flex;
     flex-wrap: wrap;
