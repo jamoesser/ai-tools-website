@@ -3,35 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Text-to-Speech (TTS) Generator</title>
+    <title>AI Text-to-Speech</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="image-generator.html">Image Generator</a>
-            <a href="tts-generator.html">TTS Generator</a>
-        </div>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
-    <!-- Centered TTS Generator -->
-    <div class="tts-container">
+    <div class="container">
         <h1>AI Text-to-Speech (TTS) Generator</h1>
         <p>Enter text and convert it into realistic AI-generated speech.</p>
-        
-        <div class="input-group">
-            <input type="text" id="ttsInput" placeholder="Enter your text here...">
-            <button onclick="generateSpeech()">Generate Speech</button>
-        </div>
 
-        <div id="ttsResult"></div>
+        <div class="tool">
+            <input type="text" id="ttsInput" placeholder="Enter your text here...">
+            <button class="button" onclick="generateSpeech()">Generate Speech</button>
+            <audio id="audioPlayer" controls style="display:none;"></audio>
+        </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         © 2025 AI Tools Hub - Powered by AI
     </footer>
 
