@@ -5,140 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>AI Image Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* 🚀 Modern Dark Theme */
-        body {
-            background-color: #0b0b0b;
-            color: #ffffff;
-            font-family: "Arial", sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            overflow-x: hidden;
-        }
-
-        /* 🔷 Navigation Bar */
-        nav {
-            background-color: #111;
-            padding: 15px;
-            text-align: center;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 1px solid #222;
-            font-size: 18px;
-        }
-
-        nav a {
-            color: #ffffff;
-            text-decoration: none;
-            margin: 0 20px;
-            transition: 0.3s ease-in-out;
-        }
-
-        nav a:hover {
-            color: #ccc;
-        }
-
-        /* 🔷 Page Container */
-        .container {
-            width: 90%;
-            max-width: 900px;
-            background: #121212;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 100px auto 0;
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
-            border: 1px solid #222;
-        }
-
-        h1 {
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        p {
-            color: #bbb;
-            font-size: 16px;
-        }
-
-        /* 🔷 Input & Button */
-        #promptInput {
-            width: 80%;
-            max-width: 600px;
-            padding: 14px;
-            border-radius: 8px;
-            border: none;
-            background: #222;
-            color: white;
-            font-size: 16px;
-            text-align: center;
-            outline: none;
-            box-shadow: inset 0px 0px 5px rgba(255, 255, 255, 0.05);
-        }
-
-        button {
-            padding: 14px 22px;
-            font-size: 16px;
-            margin-top: 15px;
-            background: #444;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            background: #666;
-        }
-
-        /* 🔷 Image Display */
-        #imageContainer {
-            margin-top: 20px;
-        }
-
-        img {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-        }
-
-        .loader {
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-top: 5px solid #fff;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-            margin: 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        
-    </style>
 </head>
 <body>
 
     <!-- Navigation -->
     <nav>
-        <a href="index.html">Chatbot</a>
-        <a href="image-generator.html">Image Generator</a>
-        <a href="tts-generator.html">TTS Generator</a>
+        <div class="logo">AI Tools Hub</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="image-generator.html">Image Generator</a>
+            <a href="tts-generator.html">TTS Generator</a>
+            <a href="chatbot.html">Chatbot</a>
+        </div>
     </nav>
 
-    <div class="container">
+    <!-- Page Title -->
+    <div class="page-title">
         <h1>AI Image Generator</h1>
-        <p>Enter a prompt below and generate an AI image using Hugging Face’s API.</p>
+        <p>Generate images using AI by entering a text prompt below.</p>
+    </div>
 
-        <input type="text" id="promptInput" placeholder="Enter your image prompt..." />
+    <!-- Content Container -->
+    <div class="container">
+        <input type="text" id="promptInput" placeholder="Enter your image prompt...">
         <button onclick="generateImage()">Generate Image</button>
-
         <div id="imageContainer"></div>
     </div>
 
