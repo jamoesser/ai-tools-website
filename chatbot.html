@@ -6,172 +6,178 @@
     <title>AI Chatbot</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        /* 🌟 General Page Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Arial", sans-serif;
+        }
 
-        /* 🔷 Chat Container */
-        #chatContainer {
-    width: 90%;
-    max-width: 800px;
-    background: #121212;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
-    display: flex;
-    flex-direction: column;
-    height: 75vh;
-    overflow-y: auto;
-    overflow-x: hidden; /* ✅ Prevents horizontal scrolling */
-    margin-top: 80px;
-    border: 1px solid #222;
-}
+        body {
+            background: #121212;
+            color: white;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
 
+        /* 🔷 Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #1a1a1a;
+            padding: 15px;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            border-bottom: 1px solid #333;
+        }
 
-        /* 🔷 Chat Messages */
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 5px 10px;
+        }
+
+        .nav-links a:hover {
+            color: #00c6ff;
+        }
+
+        /* 🌟 Chatbot Container (Perfectly Centered) */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 90%;
+            max-width: 800px;
+            height: 75vh;
+            background: #1e1e1e;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
+            border: 1px solid #292929;
+            overflow: hidden;
+            margin-top: 80px; /* Prevents overlap with nav */
+        }
+
         #chatOutput {
             flex-grow: 1;
             overflow-y: auto;
-            padding-bottom: 10px;
-            font-size: 16px;
-            padding-right: 10px;
-            display: flex;
-            flex-direction: column;
-            scrollbar-width: thin; /* ✅ Removes horizontal scrollbar */
-            scrollbar-color: #222 #0b0b0b;
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            text-align: left;
         }
 
-        #chatOutput::-webkit-scrollbar {
-            width: 6px;
-        }
-
-        #chatOutput::-webkit-scrollbar-thumb {
-            background-color: #444;
-            border-radius: 4px;
-        }
-
-        /* ✅ Fix Horizontal Scrollbar */
-        #chatOutput::-webkit-scrollbar:horizontal {
-            display: none;
-        }
-
-        .message-container {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-        }
-
-        .message {
-            padding: 12px;
-            border-radius: 6px;
-            max-width: 80%;
-            word-wrap: break-word;
-            display: inline-block;
-            font-size: 15px;
-            transition: all 0.3s ease-in-out;
-        }
-
-        .user-message {
-            background: #1a1a1a;
-            color: #ffffff;
-            align-self: flex-end;
-            text-align: right;
-            border: 1px solid #333;
-        }
-
-        .bot-message {
-            background: #222;
-            color: #ddd;
-            align-self: flex-start;
-            border: 1px solid #333;
-        }
-
-        /* 🔷 Chat Input Box */
+        /* 📝 Input & Send Button */
         #inputContainer {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
             width: 100%;
-            background: #111;
-            position: sticky;
-            bottom: 0;
-            border-top: 1px solid #222;
+            margin-top: 10px;
+            gap: 10px;
         }
 
-        /* 🔷 Input Field */
-#userInput {
-    flex: 1;
-    padding: 14px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-    background: #222;
-    color: white;
-    font-size: 16px;
-    height: 50px;
-    min-height: 50px;
-    resize: none;
-    overflow: hidden; /* ✅ Removes scrollbar inside input box */
-}
+        #userInput {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            font-size: 16px;
+            outline: none;
+            resize: none;
+        }
 
-
-        /* 🔷 Send Button */
         button {
-            background: #444;
+            padding: 12px 20px;
+            border-radius: 8px;
+            background: #00c6ff;
             color: white;
             border: none;
-            padding: 14px 22px;
-            border-radius: 8px;
-            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
         }
 
         button:hover {
-            background: #666;
-            box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+            background: #009ce0;
         }
 
-        /* 🔷 Mobile Optimization */
-        @media (max-width: 600px) {
-            #chatContainer {
-                width: 95%;
-                height: 80vh;
-                margin-top: 60px;
-                border-radius: 10px;
-                padding: 12px;
-            }
-
-            #userInput {
-                font-size: 15px;
-                height: 45px;
-                min-height: 45px;
-            }
-
-            button {
-                font-size: 14px;
-                padding: 12px;
-                min-width: 70px;
-            }
+        /* 🔲 Chat Messages */
+        .user-message, .bot-message {
+            background: #2c2d30;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            max-width: 80%;
+            text-align: left;
         }
+
+        .user-message {
+            align-self: flex-end;
+            color: #00c6ff;
+        }
+
+        .bot-message {
+            align-self: flex-start;
+            color: #ffffff;
+        }
+
+        /* 🔻 Footer */
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: #1a1a1a;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            position: absolute;
+            bottom: 0;
+        }
+
     </style>
+</head>
+<body>
 
-  <!-- Centered Navigation -->
+    <!-- Navigation -->
     <nav>
         <div class="nav-links">
             <a href="index.html">Home</a>
-            <a href="chatbot.html">Chatbot</a>
             <a href="image-generator.html">Image Generator</a>
             <a href="tts-generator.html">TTS Generator</a>
+            <a href="chatbot.html">Chatbot</a>
         </div>
     </nav>
 
-    <!-- Chatbot Section -->
-    <div id="chatContainer">
+    <!-- Centered Chatbot -->
+    <div class="chat-container">
         <div id="chatOutput"></div>
         <div id="inputContainer">
             <textarea id="userInput" placeholder="Type your message..." rows="1" onkeypress="handleKeyPress(event)"></textarea>
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>
+
+    <footer>
+        © 2025 AI Tools Hub - Powered by AI
+    </footer>
+
+   
+
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNR0H8P833"></script>
