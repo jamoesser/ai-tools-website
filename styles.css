@@ -1,190 +1,90 @@
-/* 🌟 General Styling */
-* {
+/* 🌟 GLOBAL STYLING (Applies to All Pages) */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: "Arial", sans-serif;
 }
 
-body {
-    background: #121212;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 100vh;
-}
-
-/* 🔷 Navigation Bar */
+/* 📌 NAVIGATION BAR (Applies to All Pages) */
 nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #1a1a1a;
-    padding: 15px;
-    width: 100%;
+    background: #1e1e1e;
+    padding: 15px 0;
+    text-align: center;
     position: fixed;
+    width: 100%;
     top: 0;
-    left: 0;
-    border-bottom: 1px solid #333;
-    z-index: 10;
+    z-index: 1000;
 }
 
 .nav-links {
     display: flex;
-    gap: 25px;
+    justify-content: center;
+    gap: 20px;
 }
 
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 5px 10px;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
 }
 
 .nav-links a:hover {
-    color: #00c6ff;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-/* 🌟 Hero Section (Homepage) */
-.hero {
-    margin-top: 100px;
-    text-align: center;
-    max-width: 800px;
-    padding: 20px;
-}
-
-.hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-.hero p {
-    font-size: 18px;
-    color: rgba(255, 255, 255, 0.8);
-}
-
-/* 🌟 Features Section (Homepage) */
-.features {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    width: 90%;
-    max-width: 800px;
-    margin-top: 30px;
-}
-
-.feature {
-    background: #1e1e1e;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    border: 1px solid #292929;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
-}
-
-/* 🔲 Feature Images */
-.feature img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-}
-
-/* 📝 Feature Text */
-.feature h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.feature p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    margin-bottom: 15px;
-}
-
-/* 🔘 Buttons */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background: #00c6ff;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-}
-
-.btn:hover {
-    background: #009ce0;
-}
-
-/* 🌟 Chatbot Page */
+/* 💬 CHATBOT STYLING */
 .chat-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    max-width: 800px;
-    height: calc(100vh - 140px);
+    width: 90%;
+    max-width: 600px;
+    margin: 120px auto 20px;
+    padding: 20px;
     background: #1e1e1e;
     border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
+    text-align: left;
+    overflow-y: auto;
+    height: 400px;
+}
+
+/* 📩 Chat Messages */
+.message {
+    padding: 10px;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.message.user {
+    background: #00c6ff;
+    color: #fff;
+    text-align: right;
+}
+
+.message.bot {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    text-align: left;
+}
+
+/* ✍️ Chat Input */
+.chat-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
     padding: 15px;
-    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
-    border: 1px solid #292929;
-    margin: auto;
-    margin-top: 80px;
-    overflow-y: auto;
-}
-
-/* 🔲 Chat Messages */
-#chatOutput {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 800px;
-    padding-bottom: 10px;
-    overflow-y: auto;
-}
-
-.bot-message {
-    background: #2c2d30;
-    color: white;
-    padding: 12px;
-    border-radius: 15px;
-    margin: 5px 10px;
-    max-width: 75%;
-    align-self: flex-start;
-    text-align: left;
-}
-
-.user-message {
-    background: #0084ff;
-    color: white;
-    padding: 12px;
-    border-radius: 15px;
-    margin: 5px 10px;
-    max-width: 75%;
-    align-self: flex-end;
-    text-align: left;
-}
-
-/* 📝 Chat Input Box */
-#inputContainer {
-    display: flex;
-    width: 100%;
-    max-width: 800px;
+    background: #1e1e1e;
     position: fixed;
     bottom: 0;
-    background: #1e1e1e;
-    padding: 10px;
-    border-top: 1px solid #292929;
-    z-index: 10;
+    left: 0;
 }
 
-#userInput {
+.chat-input input {
     flex: 1;
     padding: 12px;
     border-radius: 8px;
@@ -195,7 +95,8 @@ nav {
     outline: none;
 }
 
-button {
+.chat-input button {
+    margin-left: 10px;
     padding: 12px 20px;
     border-radius: 8px;
     background: #00c6ff;
@@ -205,20 +106,22 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.chat-input button:hover {
     background: #009ce0;
 }
 
-/* 🌟 Image Generator Styling */
+/* 🎨 IMAGE GENERATOR STYLING */
 .image-container {
-    margin-top: 100px;
+    margin-top: 120px;
     width: 90%;
-    max-width: 700px;
+    max-width: 600px;
     padding: 20px;
     background: #1e1e1e;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .image-container h1 {
@@ -232,7 +135,88 @@ button:hover {
     margin-bottom: 20px;
 }
 
-/* 🔲 Input & Button */
+/* 📸 Generated Image Display */
+#imageResult {
+    margin-top: 20px;
+}
+
+#imageResult img {
+    width: 100%;
+    max-width: 512px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* 🔄 IMAGE GENERATOR PROGRESS BAR */
+.progress-bar {
+    width: 100%;
+    max-width: 400px;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px auto;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: #00c6ff;
+    transition: width 0.5s ease-in-out;
+}
+
+/* 🔊 TEXT-TO-SPEECH (TTS) GENERATOR */
+.tts-container {
+    margin-top: 120px;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.05);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tts-container h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.tts-container p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+/* 🔊 TTS Generated Audio */
+#ttsResult {
+    margin-top: 20px;
+}
+
+#ttsResult audio {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 10px;
+}
+
+#ttsResult button {
+    margin-top: 10px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background: #007bff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ttsResult button:hover {
+    background: #0056b3;
+}
+
+/* 📩 INPUT & BUTTON STYLING (Applies to Image Generator & TTS) */
 .input-group {
     display: flex;
     justify-content: center;
@@ -251,6 +235,7 @@ button:hover {
     color: white;
     font-size: 16px;
     outline: none;
+    text-align: center;
 }
 
 .input-group button {
@@ -267,43 +252,44 @@ button:hover {
     background: #009ce0;
 }
 
-/* 🔲 Progress Bar */
-.progress-bar {
-    width: 100%;
-    max-width: 400px;
-    height: 10px;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 10px auto;
+/* 📱 MOBILE RESPONSIVE DESIGN */
+@media screen and (max-width: 768px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .chat-container, .tts-container, .image-container {
+        width: 95%;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .input-group input {
+        width: 100%;
+    }
+
+    .progress-bar {
+        width: 100%;
+    }
+
+    .chat-input {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .chat-input button {
+        width: 100%;
+    }
 }
 
-.progress-fill {
-    height: 100%;
-    width: 0%;
-    background: #00c6ff;
-    transition: width 0.5s ease-in-out;
-}
-
-/* 🔲 Generated Image */
-#imageResult {
-    margin-top: 20px;
-}
-
-#imageResult img {
-    width: 100%;
-    max-width: 512px;
-    border-radius: 10px;
-}
-
-/* 🔲 Footer */
+/* 📌 FOOTER */
 footer {
-    width: 100%;
+    margin-top: 30px;
+    padding: 10px;
+    background: #1e1e1e;
     text-align: center;
-    padding: 15px;
-    background: #1a1a1a;
     color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    position: relative;
-    margin-top: auto;
 }
