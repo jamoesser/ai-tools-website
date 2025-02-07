@@ -62,37 +62,46 @@ h1 {
     font-size: 24px;
 }
 
-/* Chatbox */
-.chatbox {
-    height: 400px;
-    overflow-y: auto;
-    background-color: #252525;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: left;
-    font-size: 16px;
-}
-
 /* Chat Messages */
 .message {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 10px;
     margin: 5px 0;
     width: fit-content;
     max-width: 80%;
     word-wrap: break-word;
 }
 
+/* User (You) Messages - Aligned Right */
 .user-message {
     background-color: #4caf50;
     color: white;
     align-self: flex-end;
+    text-align: right;
+    margin-left: auto;
+    border-radius: 15px 15px 0 15px;
 }
 
+/* Bot Messages - Aligned Left */
 .bot-message {
     background-color: #333;
     color: #ccc;
     align-self: flex-start;
+    text-align: left;
+    margin-right: auto;
+    border-radius: 15px 15px 15px 0;
+}
+
+/* Chatbox to Use Flex */
+.chatbox {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    overflow-y: auto;
+    background-color: #252525;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 16px;
 }
 
 /* Input Section */
