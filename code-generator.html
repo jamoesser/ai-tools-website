@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Code Generator & Debugger</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
+        <a href="code-generator.html" class="active">Code Generator</a>
+    </nav>
+
+    <div class="code-container">
+        <h1>AI Code Generator & Debugger</h1>
+        <p>Enter a code-related prompt below to generate or debug code.</p>
+
+        <textarea id="codePrompt" placeholder="Describe what you want the code to do..."></textarea>
+        <button class="generate-btn" onclick="generateCode()">Generate Code</button>
+
+        <!-- Progress Bar -->
+        <div id="progressContainer" class="progress-container" style="display: none;">
+            <div id="progressBar" class="progress-bar"></div>
+            <p id="progressText">Processing...</p>
+        </div>
+
+        <!-- Result Display -->
+        <div id="codeResult" class="code-result"></div>
+    </div>
+
+    <script>
+        async function generateCode() {
+            const prompt = document.getElementById("codePrompt").value.trim();
+            if (!prompt) {
+                alert("Please enter a description for the code.");
+                return;
+            }
+
+            const codeResult = document.getElementById("codeResult");
+            const progressContainer = document.getElementById("progressContainer");
+            const progressBar = document.getElementById("progressBar");
+            const progressText = document.getElementById("progressText");
+
+            // Reset UI
+            codeResult.innerHTML = "";
+            progressBar.style.width = "0%";
+            progressText.innerText = "Processing request...";
+            progressContainer.style.display = "block";
+
+            let progress = 0;
+            const progressInterval = setInterval(() => {
+                if (progress < 100) {
+                    progress += 20;
+                    progressBar.style.width = `${progress}%`;
+                    if (progress === 20) progressText.innerText = "Analyzing input...";
+                    if (progress === 40) progressText.innerText = "Generating logic...";
+                    if (progress === 60) progressText.innerText = "Refining code...";
+                    if (progress === 80) progressText.innerText = "Finalizing output...";
+                }
+            }, 1500); 
+
+            try {
+                console.log("🔹 Sending request to API...");
+                const response = await fetch("https://api-inference.huggingface.co/models/bigcode/starcoder", {
+                    method: "POST",
+                    headers: {
+                        "Authorization": "Bearer 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", 
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ inputs: prompt })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`API Error: ${response.status} - ${await response.text()}`);
+                }
+
+                clearInterval(progressInterval);
+                progressBar.style.width = "100%";
+                progressText.innerText = "Code Ready!";
+
+                const data = await response.json();
+                const generatedCode = data.generated_text || "Error: No code generated.";
+
+                codeResult.innerHTML = `
+                    <p><b>Generated Code:</b></p>
+                    <pre><code>${generatedCode}</code></pre>
+                    <br>
+                    <button class="copy-btn" onclick="copyToClipboard()">Copy Code</button>
+                `;
+
+            } catch (error) {
+                console.error("🚨 Error generating code:", error);
+                codeResult.innerHTML = `<p class="error-msg">Failed to generate code. Please try again.</p>`;
+            } finally {
+                setTimeout(() => {
+                    progressContainer.style.display = "none"; 
+                }, 1000);
+            }
+        }
+
+        function copyToClipboard() {
+            const codeText = document.querySelector("#codeResult pre code").innerText;
+            navigator.clipboard.writeText(codeText);
+            alert("Copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
