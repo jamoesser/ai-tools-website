@@ -1,36 +1,41 @@
-/* General Styling */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #121212;
-    color: white;
-    text-align: center;
+/* General Page Styling */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
 }
 
 /* Navigation Bar */
 .navbar {
-    background: #222;
-    padding: 15px 0;
+    background-color: #1e1e1e;
+    padding: 15px;
     text-align: center;
 }
 
 .navbar a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     font-size: 18px;
     padding: 10px 20px;
+    margin: 0 10px;
     display: inline-block;
+    transition: 0.3s;
 }
 
-.navbar a.active {
-    background-color: #4caf50;
-    border-radius: 5px;
+.navbar a:hover, .navbar a.active {
+    color: #00ff99;
 }
 
-/* Chatbot Section */
-.chat-container {
-    width: 80%;
+/* Page Container */
+.container {
+    width: 90%;
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
@@ -39,10 +44,10 @@ body {
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Chatbox */
+/* Chatbox Styling */
 .chatbox {
     width: 100%;
-    height: 300px;
+    height: 350px;
     overflow-y: auto;
     background: #292929;
     padding: 15px;
@@ -51,7 +56,6 @@ body {
     text-align: left;
 }
 
-/* User & Bot Messages */
 .message {
     padding: 10px;
     margin: 8px 0;
@@ -59,8 +63,8 @@ body {
 }
 
 .user-message {
-    background: #007bff;
-    color: white;
+    background: #00ff99;
+    color: black;
     text-align: right;
     border-radius: 15px 15px 0px 15px;
 }
@@ -72,16 +76,16 @@ body {
     border-radius: 15px 15px 15px 0px;
 }
 
-/* Input Box */
+/* Input & Button */
 .input-area {
     display: flex;
     gap: 10px;
     align-items: center;
+    justify-content: center;
 }
 
-textarea {
+input, textarea {
     width: 75%;
-    height: 50px;
     padding: 10px;
     font-size: 16px;
     border: none;
@@ -89,13 +93,11 @@ textarea {
     background: #333;
     color: white;
     outline: none;
-    resize: none;
 }
 
-/* Send Button */
-.send-button {
-    background: #4caf50;
-    color: white;
+button {
+    background: #00ff99;
+    color: black;
     border: none;
     padding: 12px 18px;
     font-size: 16px;
@@ -104,8 +106,8 @@ textarea {
     transition: 0.3s;
 }
 
-.send-button:hover {
-    background: #3e8e41;
+button:hover {
+    background: #00cc77;
 }
 
 /* Footer */
