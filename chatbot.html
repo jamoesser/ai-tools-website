@@ -55,103 +55,70 @@
             color: #00c6ff;
         }
 
-        /* 🌟 Chatbot Container */
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            width: 90%;
-            max-width: 800px;
-            height: 75vh;
-            background: #1e1e1e;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
-            border: 1px solid #292929;
-            margin-top: 80px;
-            overflow: hidden;
-        }
+/* 🔲 Chatbot Container (Ensures Footer Stays Below) */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* ✅ Pushes input to bottom */
+    align-items: center;
+    width: 90%;
+    max-width: 800px;
+    height: 75vh;
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
+    border: 1px solid #292929;
+    margin-top: 80px;
+    overflow: hidden;
+    flex-grow: 1; /* ✅ Allows it to expand with content */
+}
 
-        #chatOutput {
-            flex-grow: 1;
-            overflow-y: auto;
-            width: 100%;
-            height: 100%;
-            padding: 10px;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-        }
+/* 📝 Input Box & Send Button */
+#inputContainer {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+    gap: 10px;
+}
 
-        /* 🔲 Chat Messages */
-        .user-message {
-            background: #0084ff;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0;
-            max-width: 70%;
-            align-self: flex-end; /* ✅ User messages align right */
-            text-align: right;
-        }
+#userInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    outline: none;
+    resize: none;
+}
 
-        .bot-message {
-            background: #2c2d30;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 10px 0;
-            max-width: 70%;
-            align-self: flex-start; /* ✅ Bot messages align left */
-            text-align: left;
-        }
+button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #00c6ff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
 
-        /* 📝 Input & Send Button */
-        #inputContainer {
-            display: flex;
-            width: 100%;
-            margin-top: 10px;
-            gap: 10px;
-        }
+button:hover {
+    background: #009ce0;
+}
 
-        #userInput {
-            flex: 1;
-            padding: 12px;
-            border-radius: 8px;
-            border: none;
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            font-size: 16px;
-            outline: none;
-            resize: none;
-        }
-
-        button {
-            padding: 12px 20px;
-            border-radius: 8px;
-            background: #00c6ff;
-            color: white;
-            border: none;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #009ce0;
-        }
-
-        /* 🔻 Footer */
-        footer {
-            width: 100%;
-            text-align: center;
-            padding: 15px;
-            background: #1a1a1a;
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-            position: absolute;
-            bottom: 0;
-        }
-
+/* 🔻 Footer Fix */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    background: #1a1a1a;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    position: relative; /* ✅ Fixes footer overlapping */
+    margin-top: auto; /* ✅ Ensures footer is pushed down */
+}
     </style>
 </head>
 <body>
