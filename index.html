@@ -191,12 +191,30 @@
         }
     </style>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="index.html">Chatbot</a>
-        <a href="image-generator.html">Image Generator</a>
-        <a href="tts-generator.html">Text to Speech</a>
-    </nav>
+   <!-- Navigation -->
+<nav>
+    <a href="index.html">Chatbot</a>
+    <a href="image-generator.html">Image Generator</a>
+    <a href="tts-generator.html">TTS Generator</a>
+
+    <!-- Dark Mode Toggle Inside Nav -->
+    <div class="toggle-container">
+        <label class="toggle-switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="toggle-slider"></span>
+        </label>
+        <p>Dark Mode</p>
+    </div>
+</nav>
+<script>
+    // Dark Mode Toggle Functionality
+    const darkModeToggle = document.getElementById("darkModeToggle");
+
+    darkModeToggle.addEventListener("change", () => {
+        document.body.classList.toggle("dark-mode");
+    });
+</script>
+
 
     <!-- Chatbot Section -->
     <div id="chatContainer">
