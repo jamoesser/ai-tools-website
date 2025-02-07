@@ -1,142 +1,112 @@
-/* General Styles */
-* {
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    text-align: center;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-body {
-    background-color: #181818;
-    color: #EAEAEA;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
-/* Navigation Bar */
+/* Navbar */
 .navbar {
-    width: 100%;
-    background-color: #202123;
-    padding: 15px 0;
+    background-color: #1e1e1e;
+    padding: 15px;
     text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
 }
 
-.navbar a {
-    color: #EAEAEA;
+.navbar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
     text-decoration: none;
-    margin: 0 20px;
-    font-size: 16px;
+    color: white;
     font-weight: bold;
-    transition: color 0.3s ease-in-out;
 }
 
-.navbar a:hover {
+.navbar ul li a.active {
     color: #00A67E;
 }
 
-/* Main Content */
+/* Container */
 .container {
-    max-width: 800px;
-    text-align: center;
-    padding: 100px 20px;
-}
-
-/* Tool Sections */
-.tool {
-    background-color: #242424;
-    border-radius: 10px;
+    max-width: 600px;
+    margin: 50px auto;
+    background: #1e1e1e;
     padding: 20px;
-    margin: 20px 0;
-    text-align: center;
-    width: 100%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 166, 126, 0.3);
 }
 
-.tool input {
+/* Input & Button */
+input[type="text"] {
     width: 80%;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #222;
+    border: none;
+    font-size: 16px;
+    margin-top: 10px;
+    background: #2a2a2a;
     color: white;
-    text-align: center;
+    outline: none;
 }
 
-/* Buttons */
 .button {
-    display: inline-block;
-    background-color: #00A67E;
+    padding: 10px 20px;
+    background: #00A67E;
+    border: none;
     color: white;
-    padding: 10px 15px;
-    text-decoration: none;
+    font-size: 16px;
     border-radius: 5px;
+    cursor: pointer;
     margin-top: 10px;
-    transition: background 0.3s ease-in-out;
+    transition: background 0.3s;
 }
 
 .button:hover {
-    background-color: #009970;
+    background: #008f6b;
 }
 
 /* Progress Bar */
+.progress-container {
+    width: 80%;
+    max-width: 500px;
+    height: 8px;
+    background: #333;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 10px auto;
+    display: none;
+}
+
 .progress-bar {
-    height: 5px;
+    height: 100%;
     width: 0%;
-    background-color: #00A67E;
-    transition: width 0.5s ease-in-out;
-    margin-top: 10px;
+    background: #00A67E;
+    transition: width 0.4s ease-in-out;
+}
+
+/* Generated Image */
+.generated-image {
+    max-width: 100%;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: none;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
 }
 
 /* Footer */
-.footer {
-    text-align: center;
-    padding: 20px;
+footer {
+    margin-top: 50px;
+    padding: 15px;
+    background: #1e1e1e;
+    color: #aaa;
     font-size: 14px;
-    color: #777;
 }
-
-/* Input Fields */
-.tool input {
-    width: 100%;
-    max-width: 500px;
-    padding: 12px;
-    border-radius: 8px;
-    border: 1px solid #444;
-    background-color: #222;
-    color: white;
-    text-align: left;
-    font-size: 16px;
-    outline: none;
-    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
-}
-
-.tool input:focus {
-    border-color: #00A67E;
-    background-color: #333;
-}
-
-/* Button for Submission */
-.button {
-    display: inline-block;
-    background-color: #00A67E;
-    color: white;
-    padding: 12px 18px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 8px;
-    margin-top: 10px;
-    transition: background 0.3s ease-in-out;
-}
-
-.button:hover {
-    background-color: #009970;
-}
-
