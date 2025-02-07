@@ -14,12 +14,12 @@
         <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
-    <div class="image-container">
+    <div class="container">
         <h1>AI Image Generator</h1>
         <p>Enter a description to generate an AI image.</p>
         
         <input type="text" id="imagePrompt" placeholder="Describe the image you want...">
-        <button class="generate-btn" onclick="generateImage()">Generate</button>
+        <button class="button" onclick="generateImage()">Generate</button>
 
         <!-- Progress Bar -->
         <div id="progressContainer" class="progress-container" style="display: none;">
@@ -51,16 +51,14 @@
             progressContainer.style.display = "block";
 
             let progress = 0;
+            const progressSteps = ["Generating base structure...", "Refining details...", "Enhancing quality...", "Finalizing..."];
             const progressInterval = setInterval(() => {
                 if (progress < 100) {
-                    progress += 20;
+                    progress += 25;
                     progressBar.style.width = `${progress}%`;
-                    if (progress === 20) progressText.innerText = "Generating base structure...";
-                    if (progress === 40) progressText.innerText = "Refining details...";
-                    if (progress === 60) progressText.innerText = "Enhancing quality...";
-                    if (progress === 80) progressText.innerText = "Finalizing...";
+                    progressText.innerText = progressSteps[Math.floor(progress / 25) - 1] || "Finalizing...";
                 }
-            }, 1500); 
+            }, 1500);
 
             try {
                 console.log("🔹 Sending request to API...");
@@ -86,16 +84,16 @@
 
                 imageResult.innerHTML = `
                     <p><b>Generated Image:</b></p>
-                    <img src="${imageUrl}" alt="AI Generated Image" class="generated-image">
+                    <img src="${imageUrl}" alt="AI Generated Image" class="generated-image fade-in">
                     <br>
                     <a href="${imageUrl}" download="AI-Generated-Image.jpg">
-                        <button class="download-btn">Download Image</button>
+                        <button class="button download-btn">Download Image</button>
                     </a>
                 `;
 
             } catch (error) {
                 console.error("🚨 Error generating image:", error);
-                imageResult.innerHTML = `<p class="error-msg">Failed to generate image. Please try again.</p>`;
+                imageResult.innerHTML = `<p class="error-msg">❌ Failed to generate image. Please try again.</p>`;
             } finally {
                 setTimeout(() => {
                     progressContainer.style.display = "none"; 
