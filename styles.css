@@ -19,8 +19,10 @@ body {
 .navbar a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 15px 20px;
     font-weight: bold;
+    font-size: 18px;
+    transition: 0.3s;
 }
 
 .navbar a:hover {
@@ -29,7 +31,7 @@ body {
 
 /* Main Container */
 .container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 50px auto;
     padding: 20px;
     background: #1a1a1a;
@@ -42,18 +44,23 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 90%;
+    max-width: 700px;
     height: 500px;
     background-color: #222;
     border-radius: 10px;
     padding: 20px;
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
 }
 
 .chat-box {
     flex-grow: 1;
     overflow-y: auto;
     max-height: 400px;
-    padding: 10px;
-    border-radius: 5px;
+    padding: 15px;
+    background: #333;
+    border-radius: 10px;
 }
 
 .input-container {
@@ -64,20 +71,23 @@ body {
 
 .input-container input {
     flex-grow: 1;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
     border: none;
-    background: #333;
+    background: #444;
     color: #fff;
+    font-size: 16px;
 }
 
 .input-container button {
-    padding: 10px;
+    padding: 12px 15px;
     border-radius: 5px;
     border: none;
     background: #00bfff;
     color: #fff;
+    font-size: 16px;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 .input-container button:hover {
@@ -87,24 +97,33 @@ body {
 /* Image Generator */
 .image-generator-container {
     text-align: center;
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 191, 255, 0.2);
 }
 
 .image-generator-container input {
     width: 80%;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
     border: none;
-    background: #333;
+    background: #444;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .image-generator-container button {
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 5px;
     border: none;
     background: #00bfff;
     color: #fff;
+    font-size: 16px;
     cursor: pointer;
 }
 
@@ -122,24 +141,33 @@ body {
 /* TTS Generator */
 .tts-container {
     text-align: center;
+    width: 90%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 191, 255, 0.2);
 }
 
 .tts-container input {
     width: 80%;
-    padding: 10px;
+    padding: 12px;
     border-radius: 5px;
     border: none;
-    background: #333;
+    background: #444;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    font-size: 16px;
 }
 
 .tts-container button {
-    padding: 10px 15px;
+    padding: 12px 15px;
     border-radius: 5px;
     border: none;
     background: #00bfff;
     color: #fff;
+    font-size: 16px;
     cursor: pointer;
 }
 
