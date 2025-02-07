@@ -1,276 +1,156 @@
-/* ============================= */
-/* 🌑 Global Styles */
-/* ============================= */
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #111;
     color: #fff;
-    text-align: center;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-/* ============================= */
-/* 📌 Navigation Bar */
-/* ============================= */
-nav {
-    background-color: #222;
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    background-color: #000;
     padding: 15px 0;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 20px;
-}
-
-nav ul li a {
+.navbar a {
     color: #fff;
     text-decoration: none;
+    padding: 10px 20px;
     font-weight: bold;
-    font-size: 16px;
 }
 
-nav ul li a:hover {
-    color: #0d6efd;
+.navbar a:hover {
+    color: #00bfff;
 }
 
-/* ============================= */
-/* 🏠 Home Page (index.html) */
-/* ============================= */
+/* Main Container */
 .container {
-    padding: 40px 20px;
-}
-
-/* Header */
-h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
-}
-
-p {
-    font-size: 18px;
-    color: #ccc;
-}
-
-/* AI Tools Grid */
-.tools-grid {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 30px;
-}
-
-/* Tool Box */
-.tool {
-    background: #222;
+    max-width: 800px;
+    margin: 50px auto;
     padding: 20px;
+    background: #1a1a1a;
     border-radius: 10px;
-    width: 250px;
-    text-align: center;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.3s;
+    box-shadow: 0px 4px 10px rgba(0, 191, 255, 0.2);
 }
 
-.tool:hover {
-    transform: translateY(-5px);
-}
-
-/* Tool Icons */
-.tool-icon {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 10px;
-}
-
-/* Buttons */
-.btn {
-    display: inline-block;
-    background: #0d6efd;
-    color: #fff;
-    padding: 10px 15px;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-.btn:hover {
-    background: #0b5ed7;
-}
-
-/* ============================= */
-/* 🤖 Chatbot Page (chatbot.html) */
-/* ============================= */
+/* Chatbot Styling */
 .chat-container {
-    width: 60%;
-    margin: 30px auto;
-    background: #222;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
-    text-align: left;
-    min-height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    height: 500px;
+    background-color: #222;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-/* Messages */
-.message {
-    margin: 10px 0;
+.chat-box {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 400px;
     padding: 10px;
     border-radius: 5px;
-    max-width: 80%;
 }
 
-.user-message {
-    background-color: #0d6efd;
-    align-self: flex-end;
-    color: #fff;
-}
-
-.bot-message {
-    background-color: #444;
-    align-self: flex-start;
-    color: #fff;
-}
-
-/* Chat Input */
-.chat-input {
+.input-container {
     display: flex;
-    padding: 10px;
-    background: #222;
-    border-radius: 5px;
-    width: 100%;
+    justify-content: space-between;
+    padding-top: 10px;
 }
 
-.chat-input input {
+.input-container input {
     flex-grow: 1;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
     background: #333;
     color: #fff;
 }
 
-.chat-input input:focus {
-    outline: none;
-}
-
-.chat-input button {
-    background: #0d6efd;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
+.input-container button {
+    padding: 10px;
     border-radius: 5px;
+    border: none;
+    background: #00bfff;
+    color: #fff;
     cursor: pointer;
 }
 
-.chat-input button:hover {
-    background: #0b5ed7;
+.input-container button:hover {
+    background: #009acd;
 }
 
-/* ============================= */
-/* 🖼 Image Generator Page (image-generator.html) */
-/* ============================= */
+/* Image Generator */
 .image-generator-container {
-    width: 50%;
-    margin: 30px auto;
-    background: #222;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
     text-align: center;
 }
 
 .image-generator-container input {
     width: 80%;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
     background: #333;
     color: #fff;
+    margin-bottom: 10px;
 }
 
 .image-generator-container button {
-    background: #0d6efd;
-    color: #fff;
-    border: none;
     padding: 10px 15px;
     border-radius: 5px;
+    border: none;
+    background: #00bfff;
+    color: #fff;
     cursor: pointer;
 }
 
 .image-generator-container button:hover {
-    background: #0b5ed7;
+    background: #009acd;
 }
 
-/* Loading Bar */
-.progress-bar {
+.generated-image {
+    margin-top: 20px;
     width: 100%;
-    height: 8px;
-    background: #333;
-    border-radius: 5px;
-    margin-top: 10px;
-}
-
-.progress {
-    height: 100%;
-    width: 0%;
-    background: #0d6efd;
-    border-radius: 5px;
-}
-
-/* ============================= */
-/* 🔊 Text-to-Speech Page (tts-generator.html) */
-/* ============================= */
-.tts-container {
-    width: 50%;
-    margin: 30px auto;
-    background: #222;
+    max-width: 600px;
     border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* TTS Generator */
+.tts-container {
     text-align: center;
 }
 
 .tts-container input {
     width: 80%;
     padding: 10px;
-    border: none;
     border-radius: 5px;
+    border: none;
     background: #333;
     color: #fff;
+    margin-bottom: 10px;
 }
 
 .tts-container button {
-    background: #0d6efd;
-    color: #fff;
-    border: none;
     padding: 10px 15px;
     border-radius: 5px;
+    border: none;
+    background: #00bfff;
+    color: #fff;
     cursor: pointer;
 }
 
 .tts-container button:hover {
-    background: #0b5ed7;
+    background: #009acd;
 }
 
-/* ============================= */
-/* ⚡ Footer */
-/* ============================= */
-footer {
+/* Footer */
+.footer {
     margin-top: 50px;
-    background: #222;
-    padding: 15px 0;
-    font-size: 14px;
-    color: #bbb;
+    padding: 20px;
+    background: #000;
+    color: #fff;
 }
