@@ -1,16 +1,10 @@
-/* 🌊 Animated Wave Background */
+/* 🌟 Premium Soft Abstract Background */
 body {
-    background: linear-gradient(-45deg, #141414, #181818, #1c1c1c, #222222);
-    background-size: 400% 400%;
-    animation: waveAnimation 12s infinite ease-in-out;
+    background: linear-gradient(135deg, #121212, #1f1f1f);
+    background-attachment: fixed;
+    background-size: cover;
     color: white;
     text-align: center;
-}
-
-@keyframes waveAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
 }
 
 /* 🔷 Navigation Bar */
