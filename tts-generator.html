@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="chatbot.html">Chatbot</a>
@@ -16,21 +15,20 @@
     </nav>
 
     <div class="container">
-        <h1>AI Text-to-Speech (TTS) Generator</h1>
-        <p>Enter text and convert it into realistic AI-generated speech.</p>
-
-<div class="tool">
-    <input type="text" id="ttsInput" placeholder="Enter text to convert into speech...">
-    <button class="button" onclick="generateSpeech()">Generate Speech</button>
-    <audio id="audioPlayer" controls style="display:none; margin-top: 15px;"></audio>
-</div>
-
+        <h1>AI Text-to-Speech</h1>
+        <input type="text" id="ttsInput" placeholder="Enter text to convert...">
+        <button class="button" onclick="generateSpeech()">Generate Speech</button>
+        <audio id="audioPlayer" controls style="display:none;"></audio>
     </div>
 
-    <footer class="footer">
-        © 2025 AI Tools Hub - Powered by AI
-    </footer>
-
+    <script>
+    async function generateSpeech() {
+        const text = document.getElementById("ttsInput").value;
+        document.getElementById("audioPlayer").src = `https://dummyurl.com/audio/${text}.mp3`;
+        document.getElementById("audioPlayer").style.display = "block";
+    }
+    </script>
+    
     <script>
         async function generateSpeech() {
             const text = document.getElementById("ttsInput").value.trim();
