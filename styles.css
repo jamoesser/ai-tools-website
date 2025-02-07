@@ -48,8 +48,97 @@ nav {
     color: #00c6ff;
 }
 
-/* 🌟 Image Generator Styling */
-.image-container {
+/* 🌟 Chatbot Page */
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    height: calc(100vh - 140px);
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
+    border: 1px solid #292929;
+    margin: auto;
+    margin-top: 80px;
+    overflow-y: auto;
+}
+
+/* 🔲 Chat Messages */
+#chatOutput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 800px;
+    padding-bottom: 10px;
+    overflow-y: auto;
+}
+
+.bot-message {
+    background: #2c2d30;
+    color: white;
+    padding: 12px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    max-width: 75%;
+    align-self: flex-start;
+    text-align: left;
+}
+
+.user-message {
+    background: #0084ff;
+    color: white;
+    padding: 12px;
+    border-radius: 15px;
+    margin: 5px 10px;
+    max-width: 75%;
+    align-self: flex-end;
+    text-align: left;
+}
+
+/* 📝 Chat Input Box */
+#inputContainer {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    position: fixed;
+    bottom: 0;
+    background: #1e1e1e;
+    padding: 10px;
+    border-top: 1px solid #292929;
+    z-index: 10;
+}
+
+#userInput {
+    flex: 1;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 16px;
+    outline: none;
+}
+
+button {
+    padding: 12px 20px;
+    border-radius: 8px;
+    background: #00c6ff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #009ce0;
+}
+
+/* 🌟 Image Generator & TTS Styling */
+.image-container, .tts-container {
     margin-top: 100px;
     width: 90%;
     max-width: 700px;
@@ -60,18 +149,18 @@ nav {
     text-align: center;
 }
 
-.image-container h1 {
+.image-container h1, .tts-container h1 {
     font-size: 28px;
     margin-bottom: 10px;
 }
 
-.image-container p {
+.image-container p, .tts-container p {
     font-size: 16px;
     color: rgba(255, 255, 255, 0.8);
     margin-bottom: 20px;
 }
 
-/* 🔲 Input & Button */
+/* 🔲 Input & Button Styling */
 .input-group {
     display: flex;
     justify-content: center;
@@ -106,29 +195,13 @@ nav {
     background: #009ce0;
 }
 
-/* 🔲 Generated Image */
-#imageResult img {
+/* 🔲 Generated Content */
+#imageResult img, #ttsResult audio {
     width: 100%;
     max-width: 512px;
     border-radius: 10px;
     margin-top: 20px;
 }
-
-.loader {
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-top: 5px solid #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
-    margin: 20px auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
 
 /* 🔲 Footer */
 footer {
