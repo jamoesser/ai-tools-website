@@ -39,9 +39,10 @@ body {
     box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
 }
 
-/* Input Field */
-.image-generator input {
-    width: 70%;
+/* Textarea */
+.tts-generator textarea {
+    width: 90%;
+    height: 80px;
     padding: 12px;
     font-size: 16px;
     border: none;
@@ -49,10 +50,11 @@ body {
     background: #333;
     color: white;
     outline: none;
+    resize: none;
 }
 
 /* Button */
-.generate-btn {
+.button {
     background: #4caf50;
     color: white;
     border: none;
@@ -60,63 +62,42 @@ body {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-left: 10px;
+    margin-top: 10px;
     transition: 0.3s;
 }
 
-.generate-btn:hover {
+.button:hover {
     background: #3e8e41;
 }
 
-/* Progress Bar */
-.progress-container {
-    width: 100%;
-    background: #444;
-    height: 12px;
-    border-radius: 5px;
-    margin: 20px 0;
-    display: none;
-    position: relative;
+/* Loading & Error Text */
+.loading {
+    color: yellow;
+    font-size: 16px;
 }
 
-#progressBar {
-    width: 0%;
-    height: 12px;
-    background: #4caf50;
-    border-radius: 5px;
-    transition: width 0.5s ease-in-out;
+.error {
+    color: red;
+    font-size: 16px;
 }
 
-#progressText {
-    font-size: 14px;
-    margin-top: 10px;
-}
-
-/* Generated Image */
-.image-output {
+/* Results Container */
+.tts-result {
     margin-top: 20px;
 }
 
-.image-output img {
+.tts-result audio {
     width: 100%;
     max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
-}
-
-/* Error Message */
-.error-msg {
-    color: red;
-    font-weight: bold;
 }
 
 /* Download Button */
 .download-btn {
-    background: #1e88e5;
+    background: #008CBA;
     color: white;
     border: none;
-    padding: 10px 16px;
-    font-size: 16px;
+    padding: 10px 15px;
+    font-size: 14px;
     cursor: pointer;
     border-radius: 5px;
     margin-top: 10px;
@@ -124,7 +105,7 @@ body {
 }
 
 .download-btn:hover {
-    background: #1565c0;
+    background: #007bb5;
 }
 
 /* Footer */
