@@ -8,77 +8,24 @@
 </head>
 <body>
     <nav class="navbar">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="chatbot.html">Chatbot</a></li>
-            <li><a href="image-generator.html" class="active">Image Generator</a></li>
-            <li><a href="tts-generator.html">TTS Generator</a></li>
-        </ul>
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
     <div class="container">
         <h1>AI Image Generator</h1>
-        <p>Enter a prompt and generate an AI image using <strong>Stable Diffusion</strong>.</p>
-
-        <div class="tool">
-            <input type="text" id="imagePrompt" placeholder="Describe the image you want to generate...">
-            <button class="button" onclick="generateImage()">Generate Image</button>
-
-            <div class="progress-container">
-                <div class="progress-bar" id="progressBar"></div>
-            </div>
-
-            <img id="generatedImage" class="generated-image" style="display:none;">
-        </div>
+        <input type="text" id="imagePrompt" placeholder="Describe the image you want...">
+        <button class="button" onclick="generateImage()">Generate Image</button>
+        <img id="generatedImage" class="generated-image" style="display:none;">
     </div>
-
-    <footer>
-        <p>&copy; 2025 AI Tools Hub - Powered by AI</p>
-    </footer>
 
     <script>
     async function generateImage() {
         const prompt = document.getElementById("imagePrompt").value;
-        const progressBar = document.getElementById("progressBar");
-        const imageElement = document.getElementById("generatedImage");
-
-        if (!prompt.trim()) {
-            alert("Please enter a description for the image.");
-            return;
-        }
-
-        // Reset Progress Bar
-        progressBar.style.width = "0%";
-        progressBar.style.display = "block";
-
-        let progress = 0;
-        const interval = setInterval(() => {
-            progress += 10;
-            progressBar.style.width = progress + "%";
-            if (progress >= 100) clearInterval(interval);
-        }, 500);
-
-        try {
-            const response = await fetch('YOUR_IMAGE_GENERATION_API_ENDPOINT', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ prompt })
-            });
-
-            if (!response.ok) throw new Error("Failed to generate image");
-
-            const data = await response.json();
-            imageElement.src = data.image_url;
-            imageElement.style.display = "block";
-        } catch (error) {
-            alert("Error generating image. Please try again.");
-        } finally {
-            clearInterval(interval);
-            progressBar.style.width = "100%";
-            setTimeout(() => { progressBar.style.display = "none"; }, 1000);
-        }
+        document.getElementById("generatedImage").src = `https://dummyimage.com/600x400/000/fff&text=${prompt}`;
+        document.getElementById("generatedImage").style.display = "block";
     }
     </script>
 
