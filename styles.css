@@ -43,7 +43,7 @@ nav {
     width: 90%;
     max-width: 600px;
     height: 400px;
-    margin: 120px auto; /* Centers the chatbox */
+    margin: 100px auto; /* Centers the chatbox */
     padding: 20px;
     background: #1e1e1e;
     border-radius: 12px;
@@ -122,6 +122,26 @@ nav {
 
 .chat-input button:hover {
     background: #009ce0;
+}
+
+/* 📱 Mobile Fix */
+@media screen and (max-width: 768px) {
+    .chat-container {
+        width: 95%;
+    }
+
+    .chat-input {
+        width: 95%;
+        bottom: 10px;
+    }
+
+    .chat-input input {
+        width: 70%;
+    }
+
+    .chat-input button {
+        width: 30%;
+    }
 }
 
 /* 🎨 IMAGE GENERATOR STYLING */
