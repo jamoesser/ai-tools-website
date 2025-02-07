@@ -101,3 +101,42 @@ body {
     font-size: 14px;
     color: #777;
 }
+
+/* Input Fields */
+.tool input {
+    width: 100%;
+    max-width: 500px;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: white;
+    text-align: left;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.tool input:focus {
+    border-color: #00A67E;
+    background-color: #333;
+}
+
+/* Button for Submission */
+.button {
+    display: inline-block;
+    background-color: #00A67E;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+    background-color: #009970;
+}
+
