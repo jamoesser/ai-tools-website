@@ -1,207 +1,136 @@
-/* Global Styles */
+/* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #0d0d0d;
-    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: white;
+    text-align: center;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
-/* Navbar */
+/* Navigation Bar */
 .navbar {
-    width: 100%;
-    background-color: #1a1a1a;
+    background: #222;
     padding: 15px 0;
     text-align: center;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-}
-
-.navbar ul li {
-    display: inline;
-}
-
-.navbar ul li a {
-    text-decoration: none;
-    color: #ccc;
-    font-size: 18px;
-    padding: 10px 15px;
-    transition: color 0.3s ease;
-}
-
-.navbar ul li a:hover, 
-.navbar ul li a.active {
-    color: #4caf50;
-}
-
-/* Chatbot Container */
-.chat-container {
-    width: 50%;
-    max-width: 800px;
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-h1 {
-    color: #ffffff;
-    font-size: 24px;
-}
-
-/* Chat Messages */
-.message {
-    padding: 10px;
-    border-radius: 10px;
-    margin: 5px 0;
-    width: fit-content;
-    max-width: 80%;
-    word-wrap: break-word;
-}
-
-/* User (You) Messages - Aligned Right */
-.user-message {
-    background-color: #4caf50;
+.navbar a {
     color: white;
-    align-self: flex-end;
-    text-align: right;
-    margin-left: auto;
-    border-radius: 15px 15px 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
 }
 
-/* Bot Messages - Aligned Left */
-.bot-message {
-    background-color: #333;
-    color: #ccc;
-    align-self: flex-start;
-    text-align: left;
-    margin-right: auto;
-    border-radius: 15px 15px 15px 0;
+.navbar a.active {
+    background-color: #4caf50;
+    border-radius: 5px;
 }
 
-/* Chatbox to Use Flex */
-.chatbox {
-    display: flex;
-    flex-direction: column;
-    height: 400px;
-    overflow-y: auto;
-    background-color: #252525;
+/* Page Container */
+.container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background: #1e1e1e;
     border-radius: 10px;
-    padding: 15px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Input Field */
+.image-generator input {
+    width: 70%;
+    padding: 12px;
     font-size: 16px;
-}
-
-/* Input Section */
-.input-container {
-    display: flex;
-    margin-top: 15px;
-    gap: 10px;
-}
-
-textarea {
-    width: 100%;
-    height: 50px;
-    border-radius: 8px;
     border: none;
-    padding: 10px;
-    font-size: 16px;
-    resize: none;
-    background-color: #252525;
-    color: #e0e0e0;
+    border-radius: 5px;
+    background: #333;
+    color: white;
     outline: none;
 }
 
-button {
-    background-color: #4caf50;
+/* Button */
+.generate-btn {
+    background: #4caf50;
     color: white;
-    font-size: 16px;
     border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-/* Image Generator & TTS Styling */
-.generator-container {
-    width: 50%;
-    max-width: 800px;
-    background-color: #1a1a1a;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    margin-top: 20px;
-    text-align: center;
-}
-
-.generator-input {
-    width: 100%;
-    padding: 10px;
+    padding: 12px 18px;
     font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #444;
-    background-color: #252525;
-    color: white;
-    margin-bottom: 10px;
-}
-
-.generator-button {
-    width: 100%;
-    background-color: #4caf50;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    transition: 0.3s;
 }
 
-.generator-button:hover {
-    background-color: #45a049;
+.generate-btn:hover {
+    background: #3e8e41;
 }
 
 /* Progress Bar */
-.progress-bar {
+.progress-container {
     width: 100%;
-    height: 8px;
-    background-color: #444;
+    background: #444;
+    height: 12px;
     border-radius: 5px;
-    overflow: hidden;
-    margin-top: 10px;
+    margin: 20px 0;
     display: none;
+    position: relative;
 }
 
-.progress-bar-fill {
+#progressBar {
     width: 0%;
-    height: 100%;
-    background-color: #4caf50;
-    transition: width 0.3s ease;
+    height: 12px;
+    background: #4caf50;
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out;
+}
+
+#progressText {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Generated Image */
+.image-output {
+    margin-top: 20px;
+}
+
+.image-output img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Error Message */
+.error-msg {
+    color: red;
+    font-weight: bold;
+}
+
+/* Download Button */
+.download-btn {
+    background: #1e88e5;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.download-btn:hover {
+    background: #1565c0;
 }
 
 /* Footer */
-.footer {
-    width: 100%;
+footer {
     text-align: center;
-    padding: 15px 0;
-    color: #888;
-    font-size: 14px;
-    position: relative;
-    bottom: 0;
+    padding: 20px 0;
+    background: #222;
+    margin-top: 50px;
 }
