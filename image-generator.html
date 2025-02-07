@@ -8,38 +8,26 @@
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="image-generator.html">Image Generator</a>
-            <a href="tts-generator.html">TTS Generator</a>
-        </div>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
-    <!-- Centered Image Generator -->
-    <div class="image-container">
+    <div class="container">
         <h1>AI Image Generator</h1>
         <p>Enter a prompt and generate an AI image using **Stable Diffusion**.</p>
-        
-        <div class="input-group">
+
+        <div class="tool">
             <input type="text" id="imagePrompt" placeholder="Enter your image prompt...">
-            <button onclick="generateImage()">Generate Image</button>
+            <button class="button" onclick="generateImage()">Generate Image</button>
+            <div class="progress-bar" id="progressBar"></div>
+            <img id="generatedImage" style="display:none; width: 100%; max-width: 500px; margin-top: 20px;">
         </div>
-
-        <div id="progressContainer" style="display: none;">
-            <p>Stable Diffusion Progress:</p>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <p id="progressText">Starting...</p>
-        </div>
-
-        <div id="imageResult"></div>
     </div>
 
-    <footer>
+    <footer class="footer">
         © 2025 AI Tools Hub - Powered by AI
     </footer>
 
