@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Image Generator</title>
+    <title>AI Text-to-Speech</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,101 +11,71 @@
     <nav class="navbar">
         <a href="index.html">Home</a>
         <a href="chatbot.html">Chatbot</a>
-        <a href="image-generator.html" class="active">Image Generator</a>
-        <a href="tts-generator.html">TTS Generator</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html" class="active">TTS Generator</a>
     </nav>
 
-    <!-- Image Generator Container -->
+    <!-- TTS Generator Section -->
     <div class="container">
-        <h1>AI Image Generator</h1>
-        <p>Enter a prompt and generate an AI image using <b>Stable Diffusion</b>.</p>
+        <h1>AI Text-to-Speech</h1>
+        <p>Convert your text into realistic AI-generated speech.</p>
 
-        <div class="image-generator">
-            <input type="text" id="imagePrompt" placeholder="Describe the image you want...">
-            <button class="generate-btn" onclick="generateImage()">Generate Image</button>
+        <div class="tts-generator">
+            <textarea id="ttsInput" placeholder="Enter text here..." rows="3"></textarea>
+            <button class="button" onclick="generateSpeech()">Generate Speech</button>
         </div>
 
-        <!-- Progress Bar -->
-        <div class="progress-container" id="progressContainer">
-            <div id="progressBar"></div>
-            <p id="progressText">Starting...</p>
-        </div>
-
-        <!-- Image Display -->
-        <div class="image-output" id="imageResult"></div>
+        <!-- Results Container -->
+        <div id="ttsResult" class="tts-result"></div>
     </div>
 
     <footer>© 2025 AI Tools Hub - Powered by AI</footer>
 
     <script>
-        async function generateImage() {
-            const prompt = document.getElementById("imagePrompt").value.trim();
-            if (!prompt) {
-                alert("Please enter a description for the image.");
+        async function generateSpeech() {
+            const text = document.getElementById("ttsInput").value.trim();
+            if (!text) {
+                alert("Please enter some text!");
                 return;
             }
 
-            const imageResult = document.getElementById("imageResult");
-            const progressContainer = document.getElementById("progressContainer");
-            const progressBar = document.getElementById("progressBar");
-            const progressText = document.getElementById("progressText");
-
-            // Reset UI
-            imageResult.innerHTML = "";
-            progressBar.style.width = "0%";
-            progressText.innerText = "Initializing...";
-            progressContainer.style.display = "block";
-
-            let progress = 0;
-            const progressInterval = setInterval(() => {
-                if (progress < 100) {
-                    progress += 20;
-                    progressBar.style.width = `${progress}%`;
-                    if (progress === 20) progressText.innerText = "Generating base structure...";
-                    if (progress === 40) progressText.innerText = "Refining details...";
-                    if (progress === 60) progressText.innerText = "Enhancing quality...";
-                    if (progress === 80) progressText.innerText = "Finalizing...";
-                }
-            }, 1500); 
+            const ttsResult = document.getElementById("ttsResult");
+            ttsResult.innerHTML = "<p class='loading'>🔄 Generating speech... Please wait.</p>";
 
             try {
-                console.log("🔹 Sending request to API...");
-                const response = await fetch("https://api-inference.huggingface.co/models/black-forest-labs/FLUX.1-dev", {
+                const response = await fetch("https://api-inference.huggingface.co/models/facebook/mms-tts-eng", {
                     method: "POST",
                     headers: {
-                        "Authorization": "Bearer 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", 
+                        "Authorization": "Bearer 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",
                         "Content-Type": "application/json"
                     },
-                    body: JSON.stringify({ inputs: prompt })
+                    body: JSON.stringify({ inputs: text })
                 });
 
                 if (!response.ok) {
-                    throw new Error(`API Error: ${response.status} - ${await response.text()}`);
+                    const errorText = await response.text();
+                    console.error("API Error:", errorText);
+                    throw new Error(`API Error: ${response.status}`);
                 }
 
-                clearInterval(progressInterval);
-                progressBar.style.width = "100%";
-                progressText.innerText = "Image Ready!";
-
                 const blob = await response.blob();
-                const imageUrl = URL.createObjectURL(blob);
+                const audioUrl = URL.createObjectURL(blob);
 
-                imageResult.innerHTML = `
-                    <p><b>Generated Image:</b></p>
-                    <img src="${imageUrl}" alt="AI Generated Image">
+                ttsResult.innerHTML = `
+                    <p><b>Generated Speech:</b></p>
+                    <audio controls>
+                        <source src="${audioUrl}" type="audio/wav">
+                        Your browser does not support the audio element.
+                    </audio>
                     <br>
-                    <a href="${imageUrl}" download="AI-Generated-Image.jpg">
-                        <button class="download-btn">Download Image</button>
+                    <a href="${audioUrl}" download="Generated-Speech.wav">
+                        <button class="download-btn">Download Audio</button>
                     </a>
                 `;
 
             } catch (error) {
-                console.error("🚨 Error generating image:", error);
-                imageResult.innerHTML = `<p class="error-msg">Failed to generate image. Please try again.</p>`;
-            } finally {
-                setTimeout(() => {
-                    progressContainer.style.display = "none"; 
-                }, 1000);
+                console.error("Error generating speech:", error);
+                ttsResult.innerHTML = `<p class="error">❌ Failed to generate speech. Please try again.</p>`;
             }
         }
     </script>
