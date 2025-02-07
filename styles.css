@@ -3,12 +3,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
     background-color: #121212;
     color: white;
-    font-family: 'Arial', sans-serif;
     text-align: center;
     margin: 0;
     padding: 0;
@@ -108,38 +108,41 @@ body {
     align-self: flex-start;
 }
 
-.chat-input-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 15px;
-}
-
-.chat-input {
+/* Fix Input Fields Across All Pages */
+input[type="text"] {
     width: 80%;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: 1px solid #444;
     background: #242424;
     color: white;
     font-size: 16px;
+    outline: none;
+    transition: 0.3s ease-in-out;
 }
 
-.send-button {
+input[type="text"]:focus {
+    border: 1px solid #00ff99;
+    box-shadow: 0px 0px 10px rgba(0, 255, 153, 0.5);
+}
+
+/* Fix Button Styling Across Pages */
+button {
     background: #00ff99;
     color: black;
     border: none;
     padding: 10px 15px;
-    margin-left: 10px;
     cursor: pointer;
     border-radius: 5px;
     font-size: 16px;
+    transition: 0.3s ease-in-out;
 }
 
-.send-button:hover {
+button:hover {
     background: #00cc77;
 }
 
-/* Image Generator Styling */
+/* Image Generator */
 .image-generator-container {
     text-align: center;
     max-width: 800px;
@@ -148,30 +151,6 @@ body {
     background: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
-}
-
-.image-generator-container input {
-    width: 70%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background: #242424;
-    color: white;
-    font-size: 16px;
-}
-
-.image-generator-container button {
-    background: #00ff99;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.image-generator-container button:hover {
-    background: #00cc77;
 }
 
 .generated-image {
@@ -203,7 +182,7 @@ body {
     margin-top: 5px;
 }
 
-/* TTS Generator Styling */
+/* TTS Generator */
 .tts-container {
     text-align: center;
     max-width: 800px;
@@ -212,30 +191,6 @@ body {
     background: #1e1e1e;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 255, 153, 0.2);
-}
-
-.tts-container input {
-    width: 70%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background: #242424;
-    color: white;
-    font-size: 16px;
-}
-
-.tts-container button {
-    background: #00ff99;
-    color: black;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.tts-container button:hover {
-    background: #00cc77;
 }
 
 /* Footer */
