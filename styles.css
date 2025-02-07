@@ -47,15 +47,15 @@ nav {
     color: #00c6ff;
 }
 
-/* 🌟 Chatbot Page (ChatGPT Mobile Style) */
+/* 🌟 Chatbot Container */
 .chat-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* ✅ Messages start from the bottom */
+    justify-content: flex-end;
     align-items: center;
     width: 100%;
     max-width: 800px;
-    height: calc(100vh - 140px); /* ✅ Full height minus nav & input */
+    height: calc(100vh - 140px); /* Full height minus nav & input */
     background: #1e1e1e;
     border-radius: 12px;
     padding: 15px;
@@ -110,6 +110,7 @@ nav {
     background: #1e1e1e;
     padding: 10px;
     border-top: 1px solid #292929;
+    z-index: 10;
 }
 
 #userInput {
@@ -139,7 +140,7 @@ button:hover {
     background: #009ce0;
 }
 
-/* 🔲 Footer (No Overlapping) */
+/* 🔲 Footer (Fixed to Bottom, No Overlapping) */
 footer {
     width: 100%;
     text-align: center;
@@ -147,6 +148,6 @@ footer {
     background: #1a1a1a;
     color: rgba(255, 255, 255, 0.6);
     font-size: 14px;
-    position: relative;
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
 }
