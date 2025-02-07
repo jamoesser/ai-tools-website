@@ -2,32 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Chatbot</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="chatbot.html">Chatbot</a>
-            <a href="image-generator.html">Image Generator</a>
-            <a href="tts-generator.html">TTS Generator</a>
-        </div>
+    <nav class="navbar">
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="image-generator.html">Image Generator</a>
+        <a href="tts-generator.html">TTS Generator</a>
     </nav>
 
-    <!-- Chatbot Container -->
     <div class="chat-container">
-        <div id="chatOutput"></div>
+        <div class="chatbox" id="chatbox">
+            <!-- Messages will appear here -->
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
     </div>
 
-    <!-- Input Box -->
-    <div id="inputContainer">
-        <textarea id="userInput" placeholder="Type your message..." rows="1" onkeypress="handleKeyPress(event)"></textarea>
-        <button onclick="sendMessage()">Send</button>
-    </div>
+    <footer class="footer">
+        © 2025 AI Tools Hub - Powered by AI
+    </footer>
 
 
 <!-- Google tag (gtag.js) -->
