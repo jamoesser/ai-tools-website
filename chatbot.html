@@ -17,7 +17,6 @@
         body {
             background: #121212;
             color: white;
-            text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -56,11 +55,10 @@
             color: #00c6ff;
         }
 
-        /* 🌟 Chatbot Container (Perfectly Centered) */
+        /* 🌟 Chatbot Container */
         .chat-container {
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
             width: 90%;
             max-width: 800px;
@@ -70,8 +68,8 @@
             padding: 20px;
             box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.05);
             border: 1px solid #292929;
+            margin-top: 80px;
             overflow: hidden;
-            margin-top: 80px; /* Prevents overlap with nav */
         }
 
         #chatOutput {
@@ -80,6 +78,31 @@
             width: 100%;
             height: 100%;
             padding: 10px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 🔲 Chat Messages */
+        .user-message {
+            background: #0084ff;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            max-width: 70%;
+            align-self: flex-end; /* ✅ User messages align right */
+            text-align: right;
+        }
+
+        .bot-message {
+            background: #2c2d30;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px 0;
+            max-width: 70%;
+            align-self: flex-start; /* ✅ Bot messages align left */
             text-align: left;
         }
 
@@ -117,26 +140,6 @@
             background: #009ce0;
         }
 
-        /* 🔲 Chat Messages */
-        .user-message, .bot-message {
-            background: #2c2d30;
-            padding: 10px;
-            border-radius: 8px;
-            margin: 10px 0;
-            max-width: 80%;
-            text-align: left;
-        }
-
-        .user-message {
-            align-self: flex-end;
-            color: #00c6ff;
-        }
-
-        .bot-message {
-            align-self: flex-start;
-            color: #ffffff;
-        }
-
         /* 🔻 Footer */
         footer {
             width: 100%;
@@ -156,10 +159,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-links">
-            <a href="index.html">Home</a>            
-            <a href="chatbot.html">Chatbot</a>
+            <a href="index.html">Home</a>
             <a href="image-generator.html">Image Generator</a>
             <a href="tts-generator.html">TTS Generator</a>
+            <a href="chatbot.html">Chatbot</a>
         </div>
     </nav>
 
@@ -172,11 +175,10 @@
         </div>
     </div>
 
-    <footer>
+
+       <footer>
         © 2025 AI Tools Hub - Powered by AI
     </footer>
-
-   
 
 
 <!-- Google tag (gtag.js) -->
